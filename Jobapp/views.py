@@ -11,6 +11,6 @@ class SignUpView(generic.CreateView):
     template_name='registration/signup.html'
     success_url=reverse_lazy('home')
 
-class VerificationView(TemplateView):
-    template_name = "verification.html"
+class HomeView(TemplateView):
+    template_name = "home.html"
     

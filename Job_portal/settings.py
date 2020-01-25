@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recruiters',
     'Jobapp',
+    'jseeker_app',
     'crispy_forms',
+    'tinymce',
 ]
 
 MIDDLEWARE = [

@@ -4,6 +4,12 @@ from .choices import *
 from datetime import  datetime
 from tinymce.models import HTMLField
 # Create your models here.
+class recruiterprofile(models.model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    Gender=gender=models.IntegerField(choices=Gender_choices,default=1)
+    currentcompany=models.CharField(max_length=100)
+    resume = models.FileField(upload_to="File/")
+
 class Vacancy(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     company=models.CharField(max_length=100)

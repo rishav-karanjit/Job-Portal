@@ -6,3 +6,7 @@ category_choices=(
         (5,'Teaching/ Education'),
         (6,'General Management/ Administration'),
     )
+Gender_choices = (
+    (1,'Male'),
+    (2,'Female'),
+)

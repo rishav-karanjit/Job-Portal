@@ -25,7 +25,8 @@ class RecruiterProfileView(generic.ListView):
 class RecruiterGDetailsUpdateView(generic.UpdateView):
     model=recruiterprofile
     template_name='RecruiterDetailsUpdateView.html'
-
+    fields=['Gender','currentcompany','resume']
+    
 class RecruiterGDetailsCreateView(generic.CreateView):
     model=recruiterprofile
     template_name='RecruiterDetailsUpdateView.html'

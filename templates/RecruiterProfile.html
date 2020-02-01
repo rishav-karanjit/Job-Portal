@@ -4,6 +4,7 @@ My profile
 {% endblock title %}
 {% block body %}
 <div class="container">
+{% for i in recruiterprofile %}
     <div class="media border p-1">
         <div class="row media-body">
             <div class="col-sm-1"><img class="rounded-circle" src="{{user.avatar.url}}" width="150" height="100"></div>
@@ -15,18 +16,39 @@ My profile
     <table class="table table-hover">
         <tbody>
             <tr>
-                <td> Email
-                <td> {{user}}
+                <td> Email</td>
+                <td> {{user}}</td>
             </tr>
             <tr>
                 <td>Mobile_Number</td>
-
-                <td></td>
+                <td>{{user.Mobile_Number}}</td>
             </tr>
+            <tr>
+                <td> Gender</td>
+                <td> {{i.get_Gender_display}}</td>
+            </tr>
+            <tr>
+                <td>Current Company</td>
+                <td>{{i.currentcompany}}</td>
+            </tr>
+            {% if i.resume %}
+            <tr>
+                <td>Resume</td>
+                <td>{{i.resume.url}}</td>
+            </tr>
+            {% else %}
+            {% endif %}
+{% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'Recruiterupdateprofile' user.id %}">Update General Information</a>
-    <a href="{% url 'Recruitercreateprofile' user.id %}">Create General Information</a>
 
+    {% if recruiterprofile %}
+    <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>
+    {% else %}
+    <a href="{% url 'Recruitercreateprofile' user.id %}"><button class="btn btn-success">Add more information</button></a>
+    {% endif %}
+    
+    
+    
 </div>
 {% endblock body %}

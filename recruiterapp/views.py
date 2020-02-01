@@ -16,17 +16,16 @@ class PostVacancy(generic.CreateView):
 class RecruiterProfileView(generic.ListView):
     model=User
     template_name='RecruiterProfile.html'
-    context_object_name = 'Recruiters' 
 
     def get_context_data(self, **kwargs):
-        context = super(RecruiterProfileView, self).get_context_data(**kwargs)
-        context['additional_profile'] = recruiterprofile.objects.all()#filter(user_id=self.request.user)
-
+        ctx = super(RecruiterProfileView, self).get_context_data(**kwargs)
+        ctx['recruiterprofile'] = recruiterprofile.objects.all()
+        return ctx
 class RecruiterGDetailsUpdateView(generic.UpdateView):
     model=recruiterprofile
     template_name='RecruiterDetailsUpdateView.html'
     fields=['Gender','currentcompany','resume']
-    
+
 class RecruiterGDetailsCreateView(generic.CreateView):
     model=recruiterprofile
     template_name='RecruiterDetailsUpdateView.html'

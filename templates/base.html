@@ -13,17 +13,25 @@
 
 </head>
 <body>
+
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">JobPortal</div>
       <div class="list-group list-group-flush">
+      {% if request.user.role == 'R' %}
         <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="{% url 'PostVacancy' %}" class="list-group-item list-group-item-action bg-light">Post Vacancy</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">View applicants</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">.</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">My Profile</a>
+        <a class="nav-link" href="{% url 'logout' %}"><button type="button" class="btn btn-danger">Logout</button></a>
+      {% elif  request.user.role == 'J' %}
+
+      {% else %}
+        <a class="nav-link" href="{% url 'signup' %}"><button type="button" class="btn btn-Success">SignUp</button></a>
+        <a class="nav-link" href="{% url 'login' %}"><button type="button" class="btn btn-info">&nbspLogin&nbsp</button></a>
+      {% endif %}
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -37,19 +45,18 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}"><button type="button" class="btn btn-dark">Home</button></a></a>
+              <a class="nav-link text-body font-weight-bolder" href="{% url 'home' %}">Home&nbsp&nbsp</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'signup' %}"><button type="button" class="btn btn-Success">SignUp</button></a>
+            <li>
+              <form class="form-inline" action="/action_page.php">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+              </form>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}"><button type="button" class="btn btn-info">Login</button></a>
-            </li>
-
             {% comment %} <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
@@ -96,10 +103,6 @@
 
   <!-- Menu Toggle Script -->
   <script>
-    $(document).ready(function(){
-        $("#wrapper").toggleClass("toggled");
-    });
-
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");

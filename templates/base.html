@@ -23,7 +23,7 @@
         <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="{% url 'Postvacancy' %}" class="list-group-item list-group-item-action bg-light">Post Vacancy</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">View applicants</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">.</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">My vacancy</a>
         <a href="{% url 'Recruiterprofile' %}" class="list-group-item list-group-item-action bg-light">My Profile</a>
         <a class="nav-link" href="{% url 'logout' %}"><button type="button" class="btn btn-danger">Logout</button></a>
       {% elif  request.user.role == 'J' %}
@@ -47,10 +47,11 @@
         </button>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          
+            {% if not request.user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link text-body font-weight-bolder" href="{% url 'home' %}">Home&nbsp&nbsp</a>
             </li>
+            {% endif %}
             <li>
               <form class="form-inline" action="/action_page.php">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">

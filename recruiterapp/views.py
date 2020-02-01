@@ -19,3 +19,7 @@ class RecruiterProfileView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(RecruiterProfileView, self).get_context_data(**kwargs)
         context['additional_profile'] = recruiterprofile.objects.all()#filter(user_id=self.request.user)
+
+class RecruiterGDetailsUpdateView(generic.UpdateView):
+    model=recruiterprofile
+    template_name='RecruiterDetailsUpdateView.html'

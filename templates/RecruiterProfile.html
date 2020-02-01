@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+My profile
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="media border p-1">
+        <div class="row media-body">
+            <div class="col-sm-4"><img class="rounded-circle" src="{{user.avatar.url}}" width="150" height="100"></div>
+            <div class="col-sm-8 text-center"><h1>{{user.first_name}} {{user.last_name}}</h1>
+            adadaa
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

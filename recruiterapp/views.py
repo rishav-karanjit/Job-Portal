@@ -11,3 +11,6 @@ class PostVacancy(generic.CreateView):
         instance.user_id=self.request.user.id
         instance.save()
         return redirect('vacancy')
+class RecruiterProfileView(generic.ListView):
+    model=User
+    template_name='RecruiterProfile.html'

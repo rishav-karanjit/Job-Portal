@@ -14,3 +14,8 @@ class PostVacancy(generic.CreateView):
 class RecruiterProfileView(generic.ListView):
     model=User
     template_name='RecruiterProfile.html'
+    context_object_name = 'Recruiters' 
+
+    def get_context_data(self, **kwargs):
+        context = super(RecruiterProfileView, self).get_context_data(**kwargs)
+        context['additional_profile'] = recruiterprofile.objects.all()#filter(user_id=self.request.user)

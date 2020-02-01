@@ -13,6 +13,7 @@ class PostVacancy(generic.CreateView):
         instance.user_id=self.request.user.id
         instance.save()
         return redirect('vacancy')
+
 class RecruiterProfileView(generic.ListView):
     model=User
     template_name='RecruiterProfile.html'
@@ -24,7 +25,10 @@ class RecruiterProfileView(generic.ListView):
 class RecruiterGDetailsUpdateView(generic.UpdateView):
     model=recruiterprofile
     template_name='RecruiterDetailsUpdateView.html'
-    fields=['Gender','currentcompany','resume']
+    fields=['Gender','currentcompany','profession','resume']
+    def form_valid(self,form):
+        instance=form.save()
+        return redirect('Recruiterprofile')
 
 class RecruiterGDetailsCreateView(generic.CreateView):
     model=recruiterprofile
@@ -34,4 +38,4 @@ class RecruiterGDetailsCreateView(generic.CreateView):
         instance=form.save(commit=False)
         instance.user=self.request.user
         instance.save()
-        return redirect('Recruiterprofile',self.request.user.id)
+        return redirect('Recruiterprofile')

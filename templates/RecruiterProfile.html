@@ -9,8 +9,9 @@ My profile
         <div class="row media-body">
             <div class="col-sm-1"><img class="rounded-circle" src="{{user.avatar.url}}" width="150" height="100"></div>
             <div class="col-sm-11 text-center"><h1>{{user.first_name}} {{user.last_name}}</h1>
-            BIO
+            {{i.profession}}
             </div>
+{% endfor %} 
         </div>
     </div>
     <table class="table table-hover">
@@ -23,6 +24,7 @@ My profile
                 <td>Mobile_Number</td>
                 <td>{{user.Mobile_Number}}</td>
             </tr>
+{% for i in recruiterprofile %}
             <tr>
                 <td> Gender</td>
                 <td> {{i.get_Gender_display}}</td>
@@ -38,17 +40,17 @@ My profile
             </tr>
             {% else %}
             {% endif %}
-{% endfor %}
+{% endfor %} 
         </tbody>
     </table>
-
-    {% if recruiterprofile %}
-    <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>
-    {% else %}
-    <a href="{% url 'Recruitercreateprofile' user.id %}"><button class="btn btn-success">Add more information</button></a>
-    {% endif %}
+    {% for i in recruiterprofile %}
+        <a href="{% url 'Recruiterupdateprofile' i.id %}"><button class="btn btn-secondary">Update Profile</button></a>
+    {% endfor %}
+        {% if not recruiterprofile %}
+            <a href="{% url 'Recruitercreateprofile' user.id %}"><button class="btn btn-success">Add more information</button></a>
+        {% endif %}
     
-    
+  
     
 </div>
 {% endblock body %}

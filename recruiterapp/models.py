@@ -8,7 +8,7 @@ class recruiterprofile(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     Gender=models.IntegerField(choices=Gender_choices,default=1)
     currentcompany=models.CharField(max_length=100)
-    resume = models.FileField(upload_to="File/")
+    resume = models.FileField(upload_to="File/",blank=True)
 
 class Vacancy(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)

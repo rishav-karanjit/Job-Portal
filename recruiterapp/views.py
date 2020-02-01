@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import generic
 from .models import *
+
+
 # Create your views here.
 class PostVacancy(generic.CreateView):
     model= Vacancy
@@ -23,3 +25,13 @@ class RecruiterProfileView(generic.ListView):
 class RecruiterGDetailsUpdateView(generic.UpdateView):
     model=recruiterprofile
     template_name='RecruiterDetailsUpdateView.html'
+
+class RecruiterGDetailsCreateView(generic.CreateView):
+    model=recruiterprofile
+    template_name='RecruiterDetailsUpdateView.html'
+    fields=['Gender','currentcompany','resume']
+    def form_valid(self,form):
+        instance=form.save(commit=False)
+        instance.user=self.request.user
+        instance.save()
+        return redirect('Recruiterprofile',self.request.user.id)

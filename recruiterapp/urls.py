@@ -6,4 +6,5 @@ urlpatterns = [
     path('postvacancy/',views.PostVacancy.as_view(),name="Postvacancy"),
     path('recruiterprofile/',views.RecruiterProfileView.as_view(),name="Recruiterprofile"),
     path('recruiterprofile/updategeneraldetails/<int:pk>/',views.RecruiterGDetailsUpdateView.as_view(),name="Recruiterupdateprofile"),
+    path('recruiterprofile/creategeneraldetails/<int:pk>/',views.RecruiterGDetailsCreateView.as_view(),name="Recruitercreateprofile"),
 ]

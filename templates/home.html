@@ -38,7 +38,7 @@
         </ul>
         {% endif %}
         <ul class="nav navbar-brand mx-auto">
-            <a class="nav-link text-dark display-4" href="#"><li class="nav-item">JobPortal</li></a>
+            <a class="nav-link text-dark display-4" href="{%url 'home'%}"><li class="nav-item">JobPortal</li></a>
         </ul>
         <ul>
             {% if not request.user.is_authenticated %}

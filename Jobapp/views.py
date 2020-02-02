@@ -13,4 +13,4 @@ class SignUpView(generic.CreateView):
 
 class HomeView(TemplateView):
     template_name = "home.html"
-    
+

@@ -20,7 +20,7 @@
       <div class="sidebar-heading">JobPortal</div>
       <div class="list-group list-group-flush">
       {% if request.user.role == 'R' %}
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="{% url 'Postvacancy' %}" class="list-group-item list-group-item-action bg-light">Post Vacancy</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">View applicants</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">My vacancy</a>

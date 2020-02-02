@@ -16,6 +16,16 @@ class PostVacancy(generic.CreateView):
         instance.save()
         return redirect('vacancy')
 
+class ViewVacancy(generic.ListView):
+    model= Vacancy
+    template_name='ViewVacancy.html'
+    context_object_name='vacancys'
+    def get_queryset(self):
+        user_id = self.request.user.id
+        if user_id is None:
+            return []
+        return Vacancy.objects.filter(user=self.request.user)
+
 class RecruiterProfileView(generic.ListView):
     model=User
     template_name='RecruiterProfile.html'

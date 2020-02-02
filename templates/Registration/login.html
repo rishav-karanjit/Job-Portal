@@ -1,21 +1,38 @@
-{% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}
-Login
-{% endblock title %} 
-{% block body %}
-<div class="container">
-    <h2 class="text-center">Login</h2>
-    <hr>
+{% load static %}
+<html>
+<head>
+  <title>JobPortal</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<style>
+    /* override Bootstrap's container */
+    .container-fluid {
+        padding-right:0;
+        padding-left:0;
+        margin-right:auto;
+        margin-left:auto
+    }
+</style>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">     
+        <ul class="nav navbar-brand mx-auto">
+            <a class="nav-link text-dark display-4" href="#"><li class="nav-item">JobPortal</li></a>
+        </ul>
+    </nav>
+    <br>
 </div>
 <div class="container">
-    <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form|crispy}}
-    <div class="text-center"><input type="submit" value="Login" class="btn btn-info "></div>
+    <h2>Login</h2>
+    <hr>
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="text-center"><input type="submit" value="Signup" class="btn btn-success"></div>
     </form>
     <p class="text-center display-4 m-3 p-3" style="font-size:150%">OR</p>
-    <div class="text-center"><a href="{% url 'signup' %}" class="text-center btn btn-success">Create New Account</a></div>
+    <div class="text-center"><a href="{% url 'signup' %}" class="text-center btn btn-info">Login</a></div>
 </div>
-{% endblock body %}
-

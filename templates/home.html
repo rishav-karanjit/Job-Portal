@@ -22,6 +22,12 @@
     width: 100%;
     z-index: 10;
     }
+    #signup:hover{
+        background-color:#db9070
+    }
+    #signup{
+        background-color:#EDC7B7
+    }
 </style>
 <body>
 <div class="container-fluid">
@@ -39,11 +45,16 @@
         <h3 class="display-1 text-center m-5 p-5 text-body" style="font-family:TISA">Find the right job or internship for you</h3>            
     </div>
     <div style="background-color:#BAB2B5"  class="p-4 display-4 text-center">
-        <h6 class="display-1 text-center m-5 p-5 text-secondary" style="font-family:ARVO">Welcome to your professional community</h6>
+        <h6 class="display-1 text-center m-5 p-5 text-secondary" style="font-family:OPEN SANS">Post your job for millions of people to see</h6>
     </div>  
     <div style="background-color:#AC3B61" class="p-4 display-4 text-center">
-        <h3 class="display-1 text-center m-5 p-5 text-body" style="font-family:TISA">Find the right job or internship for you</h3>                           
+        <h3 class="display-1 text-center m-5 p-5 text-body" style="font-family:MERRIWEATHER">Connect with people who can help</h3>                           
     </div>
+<a href="{% url 'signup' %}">
+    <div class="btn btn-primary p-4 display-4 text-center" id="Signup">
+        <h3 class="display-1 text-center m-5 p-5 text-body" style="font-family:ARIAL">Sign Up Now</h3>                           
+    </div>
+    </a>
 </div>
     
 

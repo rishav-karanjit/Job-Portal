@@ -14,7 +14,7 @@ class PostVacancy(generic.CreateView):
         instance=form.save(commit=False)
         instance.user_id=self.request.user.id
         instance.save()
-        return redirect('vacancy')
+        return redirect('Postvacancy')
 
 class ViewVacancy(generic.ListView):
     model= Vacancy

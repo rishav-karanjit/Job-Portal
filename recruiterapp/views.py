@@ -8,7 +8,7 @@ class DashboardView(generic.TemplateView):
     template_name='dashboard.html'
 class PostVacancy(generic.CreateView):
     model= Vacancy
-    template_name='jseeker_postVacancy.html'
+    template_name='Recruiters/postVacancy.html'
     fields=['company','jobcategory','title','deadline','description']
     def form_valid(self,form):
         instance=form.save(commit=False)
@@ -18,7 +18,7 @@ class PostVacancy(generic.CreateView):
 
 class ViewVacancy(generic.ListView):
     model= Vacancy
-    template_name='ViewVacancy.html'
+    template_name='Recruiters/ViewVacancy.html'
     context_object_name='vacancys'
     def get_queryset(self):
         user_id = self.request.user.id
@@ -28,7 +28,7 @@ class ViewVacancy(generic.ListView):
 
 class RecruiterProfileView(generic.ListView):
     model=User
-    template_name='RecruiterProfile.html'
+    template_name='Recruiters/RecruiterProfile.html'
 
     def get_context_data(self, **kwargs):
         ctx = super(RecruiterProfileView, self).get_context_data(**kwargs)
@@ -36,7 +36,7 @@ class RecruiterProfileView(generic.ListView):
         return ctx
 class RecruiterGDetailsUpdateView(generic.UpdateView):
     model=recruiterprofile
-    template_name='RecruiterDetailsUpdateView.html'
+    template_name='Recruiters/RecruiterDetailsUpdateView.html'
     fields=['Gender','currentcompany','profession','resume']
     def form_valid(self,form):
         instance=form.save()
@@ -44,7 +44,7 @@ class RecruiterGDetailsUpdateView(generic.UpdateView):
 
 class RecruiterGDetailsCreateView(generic.CreateView):
     model=recruiterprofile
-    template_name='RecruiterDetailsUpdateView.html'
+    template_name='Recruiters/RecruiterDetailsUpdateView.html'
     fields=['Gender','currentcompany','profession','resume']
     def form_valid(self,form):
         instance=form.save(commit=False)

@@ -5,7 +5,7 @@ from .models import *
 
 # Create your views here.
 class DashboardView(generic.TemplateView):
-    template_name='dashboard.html'
+    template_name='Recruiters/dashboard.html'
 class PostVacancy(generic.CreateView):
     model= Vacancy
     template_name='Recruiters/postVacancy.html'

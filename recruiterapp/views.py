@@ -32,7 +32,7 @@ class RecruiterProfileView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         ctx = super(RecruiterProfileView, self).get_context_data(**kwargs)
-        ctx['recruiterprofile'] = recruiterprofile.objects.all()
+        ctx['recruiterprofile'] = recruiterprofile.objects.filter(user=self.request.user)
         return ctx
 class RecruiterGDetailsUpdateView(generic.UpdateView):
     model=recruiterprofile
@@ -45,7 +45,7 @@ class RecruiterGDetailsUpdateView(generic.UpdateView):
 class RecruiterGDetailsCreateView(generic.CreateView):
     model=recruiterprofile
     template_name='RecruiterDetailsUpdateView.html'
-    fields=['Gender','currentcompany','resume']
+    fields=['Gender','currentcompany','profession','resume']
     def form_valid(self,form):
         instance=form.save(commit=False)
         instance.user=self.request.user

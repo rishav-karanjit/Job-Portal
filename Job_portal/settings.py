@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Jobapp',
     'recruiterapp',
+    'jobseekerapp',
     'crispy_forms',
     'tinymce',
 ]

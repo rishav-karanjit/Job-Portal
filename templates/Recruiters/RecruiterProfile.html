@@ -47,10 +47,6 @@ My profile
     {% for i in recruiterprofile %}
         <a href="{% url 'Recruiterupdateprofile' i.id %}"><button class="btn btn-secondary">Update Profile</button></a>
     {% endfor %}
-        {% if not recruiterprofile %}
-            <a href="{% url 'Recruitercreateprofile' user.id %}"><button class="btn btn-success">Add more information</button></a>
-        {% endif %}
-    
   
     
 </div>

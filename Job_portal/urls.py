@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include('Jobapp.urls')),
     path("recruiter/",include('recruiterapp.urls')),
+    path("recruiter/",include('jobseekerapp.urls')),
     path("tinymce/",include('tinymce.urls')),
     path("",include('django.contrib.auth.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,46 +8,35 @@ My profile
     <div class="media border p-1">
         <div class="row media-body">
             <div class="col-sm-1"><img class="rounded-circle" src="{{user.avatar.url}}" width="150" height="100"></div>
-            <div class="col-sm-11 text-center"><h1>{{user.first_name}} {{user.last_name}}</h1>
-{% for i in recruiterprofile %}
-            {{i.profession}}    
-{% endfor %}
-</div> 
+                <div class="col-sm-11 text-center"><h1>{{user.first_name}} {{user.last_name}}</h1>
+                    {{user.profession}}    
+                </div> 
+            </div>
         </div>
-    </div>
-    <table class="table table-hover">
-        <tbody>
-            <tr>
-                <td> Email</td>
-                <td> {{user}}</td>
-            </tr>
-            <tr>
-                <td>Mobile_Number</td>
-                <td>{{user.Mobile_Number}}</td>
-            </tr>
-{% for i in recruiterprofile %}
-            <tr>
-                <td> Gender</td>
-                <td> {{i.get_Gender_display}}</td>
-            </tr>
-            <tr>
-                <td>Current Company</td>
-                <td>{{i.currentcompany}}</td>
-            </tr>
-            {% if i.resume %}
-            <tr>
-                <td>Resume</td>
-                <td>{{i.resume.url}}</td>
-            </tr>
-            {% else %}
-            {% endif %}
-{% endfor %} 
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <td> Email</td>
+                    <td> {{user}}</td>
+                </tr>
+                <tr>
+                    <td>Mobile_Number</td>
+                    <td>{{user.Mobile_Number}}</td>
+                </tr>
+                <tr>
+                    <td> Gender</td>
+                    <td> {{user.get_Gender_display}}</td>
+                </tr>
+                <tr>
+                    <td>Current Company</td>
+                    <td>{{user.currentcompany}}</td>
+                </tr>
+                <tr>
+                    <td>Resume</td>
+                    <td>{{i.resume.url}}</td>
+                </tr>
         </tbody>
     </table>
-    {% for i in recruiterprofile %}
-        <a href="{% url 'Recruiterupdateprofile' i.id %}"><button class="btn btn-secondary">Update Profile</button></a>
-    {% endfor %}
-  
-    
+    <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>
 </div>
 {% endblock body %}

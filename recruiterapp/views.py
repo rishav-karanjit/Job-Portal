@@ -33,7 +33,7 @@ class RecruiterProfileView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         ctx = super(RecruiterProfileView, self).get_context_data(**kwargs)
-        ctx['recruiterprofile'] = User.objects.filter(user=self.request.user)
+        # ctx['recruiterprofile'] = User.objects.filter(user=self.request.user)
         return ctx
 class RecruiterDetailsUpdateView(generic.UpdateView):
     model=User

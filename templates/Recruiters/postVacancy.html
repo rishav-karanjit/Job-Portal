@@ -4,12 +4,19 @@
 Post Vacancy
 {% endblock title %}
 {% block body %}
-<h2 class="text-center">Post Vacancy</h2>
-<div class="mx-auto">
+{% if request.user.currentcompany %}
+    <h2 class="text-center">Post Vacancy</h2>
+    <div class="mx-auto">
     <form method="POST" class="post-form">
         {% csrf_token %}
         {{form|crispy}}
         {{ form.media }}
-        <div class="text-center"><button type="submit" class="save btn btn-default bg-info">Save</button></div>
-</div>
+        <div class="text-center"><button type="submit" class="save btn btn-default bg-info">Save</button></div>       
+    </div>        
+{% else %}
+    <div class="jumbotron" id="postvacancyerror">
+        Please add your current company name before posting vacancy 
+    </div>
+{% endif %}
+
 {% endblock body %}

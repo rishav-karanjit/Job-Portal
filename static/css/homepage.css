@@ -1,0 +1,20 @@
+.container-fluid {
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto
+}
+div div {
+box-sizing: border-box;
+display: inline-block;
+padding: 50px;
+text-align: center;
+width: 100%;
+z-index: 10;
+}
+#signup:hover{
+    background-color:#db9070
+}
+#signup{
+    background-color:#EDC7B7
+}

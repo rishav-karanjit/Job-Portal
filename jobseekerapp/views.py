@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import generic
 from recruiterapp.models import *
 from jobseekerapp.models import *
@@ -21,11 +21,30 @@ class jseekerprofile(generic.ListView):
     def get_queryset(self):
         return JseekerProfile.objects.filter(user=self.request.user)
 
+class jaddskills(generic.CreateView):
+    model= JseekerSkill
+    template_name='Jobseeker/JAddSkill.html'
+    fields=['skill']
+    def form_valid(self,form):
+        instance=form.save(commit=False)
+        instance.user_id=self.request.user.id
+        instance.save()
+        a=instance.id
+        print(a)
+        return redirect('addproskills',a)
+
 def Applyvacancy(request, pk):
-    form = VacancyAppliedForm(request.POST or None)
     vacancys = Vacancy.objects.get(id=pk)
     user = request.user   
     vacancy = vacancys
     jseeker = VacancyApply(vacancy=vacancy,user=user)
     jseeker.save()
     return redirect('VacancyStatus') 
+
+def JobProfileUpdate(request,pk):
+    skill=JseekerSkill.objects.get(id=pk)
+    user=request.user.id
+    j=JseekerProfile.objects.create(user_id=user)
+    j.skills.add(skill.id)
+    j.save()
+    return redirect('JProfile')

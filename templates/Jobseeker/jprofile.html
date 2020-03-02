@@ -40,10 +40,17 @@
     <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>
     <div>
         <div class="m-2"><h3>Skills</h3></div>
-        {% for profile in profiles %}
-            {{profile.user}}
-        {% endfor %}
+        <table class="table table-hover">
+            <tbody>
+            {% for profile in profiles %}
+                {% for i in profile.skills.all %}
+                <tr><td>{{i.skill}}</td></tr>
+                {% endfor %}          
+            {% endfor %}
+            </tbody>
+        </table>
         {% if not profiles %}No skills added{% endif %}
+        <div class="m-2"><a href="{% url 'addskills' %}" class="btn btn-success">Add Skill</a></div>
     </div>
 </div>
 {% endblock body %}

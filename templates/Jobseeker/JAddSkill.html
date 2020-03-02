@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+Add skill
+{% endblock title %}
+{% block body %}
+<div class="container">
+<h3>Add skill</h3>
+<form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default bg-info">Save</button>
+</form>
+</div>
+{% endblock body %}

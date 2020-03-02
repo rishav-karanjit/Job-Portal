@@ -7,4 +7,11 @@ class VacancyApply(models.Model):
     vacancy=models.ForeignKey(Vacancy,on_delete=models.CASCADE)
     applieddate=models.DateField(auto_now=True)
     status=models.IntegerField(choices=status_choices,default=1)
-# Create your models here.
+    
+class JseekerSkill(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    skills=models.CharField(max_length=50)
+    
+class jseekerprofile(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    skills=models.ForeignKey(Skill,on_delete=models.CASCADE)

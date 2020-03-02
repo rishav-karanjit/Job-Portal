@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('jdashboard/',views.DashboardView.as_view(),name="Jdashboard"),
-    path('jviewvacancy/',views.ViewVacancy.as_view(),name="JViewVacancy"),   
+    path('jviewvacancy/',views.ViewVacancy.as_view(),name="JViewVacancy"),
+    path("japplyvacancy/<int:pk>",views.Applyvacancy,name="ApplyVacancy"),   
 ]

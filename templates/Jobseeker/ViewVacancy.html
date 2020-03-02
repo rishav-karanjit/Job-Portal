@@ -4,12 +4,15 @@ Vacancy
 {% endblock title %}
 {% block body %}
     {% for i in vacancys %}
+    <div>
         Company:{{i.company}}
         Category{{i.jobcategory}}
         Title{{i.title}}
         date_added:{{i.date_added}}
         deadline{{i.deadline}}
         Description:{{i.description|safe}}
-        Added by:{{i.user.first_name}}
+        Added by:{{i.user.first_name}}<br>
+        <a href="{% url 'ApplyVacancy' i.id%}" class="btn btn-success">Apply</a>
+    </div>
     {% endfor %}
 {% endblock body %}

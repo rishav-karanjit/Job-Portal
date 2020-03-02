@@ -14,6 +14,13 @@ class ViewVacancy(generic.ListView):
     def get_queryset(self):
         return Vacancy.objects.all()
 
+class jseekerprofile(generic.ListView):
+    model=JseekerProfile
+    template_name='Jobseeker/jprofile.html'
+    context_object_name='profiles'
+    def get_queryset(self):
+        return JseekerProfile.objects.filter(user=self.request.user)
+
 def Applyvacancy(request, pk):
     form = VacancyAppliedForm(request.POST or None)
     vacancys = Vacancy.objects.get(id=pk)

@@ -11,7 +11,7 @@ class VacancyApply(models.Model):
 class JseekerSkill(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     skills=models.CharField(max_length=50)
-    
-class jseekerprofile(models.Model):
+
+class JseekerProfile(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    skills=models.ForeignKey(Skill,on_delete=models.CASCADE)
+    skills=models.ManyToManyField(JseekerSkill)

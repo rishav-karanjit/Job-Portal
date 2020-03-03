@@ -36,7 +36,7 @@ class jaddskills(generic.CreateView):
 class jaddedu(generic.CreateView):
     model= JseekerEdu
     template_name='Jobseeker/JAddedu.html'
-    fields=['institute','course_completed','date_started','date_ended']
+    fields=['institute','degree','field_of_study','date_started','date_ended']
     def form_valid(self,form):
         instance=form.save(commit=False)
         instance.user_id=self.request.user.id
@@ -67,3 +67,11 @@ def JobProeduUpdate(request,pk):
     j.education.add(edu.id)
     j.save()
     return redirect('JProfile')
+
+def SkillsDeleteView(request,pk):
+    profileobj = JseekerProfile.objects.get(skills=pk)
+    skillobj = JseekerSkill.objects.get(id=pk)
+    profileobj.delete()
+    skillobj.delete()
+    return redirect('JProfile')
+    #return redirect('JProfile')

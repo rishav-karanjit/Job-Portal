@@ -44,8 +44,10 @@
             <tbody>
                 {% for profile in profiles %}
                     {% for i in profile.skills.all %}
-                        
-                        <tr><td>{{i.skill}}</td></tr>
+                        <tr>
+                            <td>{{i.skill}}</td>
+                            <td><a href="{% url 'skilldeleteview' i.id %}" class="btn btn-danger">X</a></td>
+                        </tr>
                     {% endfor %}       
                 {% endfor %}
             </tbody>
@@ -59,10 +61,17 @@
             {% for profile in profiles%}
                 {% for i in profile.education.all %}
                 <tr>
-                    <td><b>Institute:</b> {{i.institute}}</td>
-                    <td><b>Course Completed:</b> {{i.course_completed}}</td>
-                    {% if i.date_started %}<td><b>From:</b> {{i.date_started}}</td>{% endif %}
-                    {% if i.date_ended %}<td><b>To:</b> {{i.date_ended}}</td>{% endif %}
+                    <td class="text-center">
+                        <b>{{i.institute}}</b><br>{{i.degree}} in {{i.field_of_study}}
+                    </td>
+                    <td class="text-center">
+                    {% if i.date_started %}
+                        {{i.date_started}}
+                    {% endif %}
+                    {% if i.date_ended %}
+                        {% if i.date_started %}-{% else %}Till{% endif %} {{i.date_ended}}
+                    {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}          
             {% endfor %}

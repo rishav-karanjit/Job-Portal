@@ -10,4 +10,5 @@ urlpatterns = [
     path("ntomskills/<int:pk>",views.JobProfileUpdate,name="addproskills"),
     path("addedu/",views.jaddedu.as_view(),name="addedu"),
     path("ntomedu/<int:pk>",views.JobProeduUpdate,name="addproedu"),
+    path("deleteskill/<int:pk>",views.SkillsDeleteView,name="skilldeleteview"),
 ]

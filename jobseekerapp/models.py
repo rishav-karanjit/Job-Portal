@@ -15,9 +15,10 @@ class JseekerSkill(models.Model):
 class JseekerEdu(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     institute=models.CharField(max_length=50)
-    course_completed=models.CharField(max_length=50)
-    date_started=models.DateField(blank=True)
-    date_ended=models.DateField(blank=True)
+    degree=models.CharField(max_length=50)
+    field_of_study=models.CharField(max_length=50)
+    date_started=models.DateField(blank=True,null=True)
+    date_ended=models.DateField(blank=True,null=True)
 
 class JseekerProfile(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)

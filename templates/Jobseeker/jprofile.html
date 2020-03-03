@@ -72,6 +72,9 @@
                         {% if i.date_started %}-{% else %}Till{% endif %} {{i.date_ended}}
                     {% endif %}
                     </td>
+                    <td>
+                        <a href="{% url 'edudeleteview' i.id %}" class="btn btn-danger">X</a>
+                    </td>
                 </tr>
                 {% endfor %}          
             {% endfor %}

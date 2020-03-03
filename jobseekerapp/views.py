@@ -74,4 +74,10 @@ def SkillsDeleteView(request,pk):
     profileobj.delete()
     skillobj.delete()
     return redirect('JProfile')
-    #return redirect('JProfile')
+
+def EduDeleteView(request,pk):
+    profileobj = JseekerProfile.objects.get(education=pk)
+    eduobj = JseekerEdu.objects.get(id=pk)
+    profileobj.delete()
+    eduobj.delete()
+    return redirect('JProfile')

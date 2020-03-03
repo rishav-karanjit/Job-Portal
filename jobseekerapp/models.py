@@ -12,6 +12,14 @@ class JseekerSkill(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     skill=models.CharField(max_length=50)
 
+class JseekerEdu(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    institute=models.CharField(max_length=50)
+    course_completed=models.CharField(max_length=50)
+    date_started=models.DateField(blank=True)
+    date_ended=models.DateField(blank=True)
+
 class JseekerProfile(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     skills=models.ManyToManyField(JseekerSkill)
+    education=models.ManyToManyField(JseekerEdu)

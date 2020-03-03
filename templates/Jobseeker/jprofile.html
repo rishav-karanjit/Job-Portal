@@ -42,15 +42,33 @@
         <div class="m-2"><h3>Skills</h3></div>
         <table class="table table-hover">
             <tbody>
-            {% for profile in profiles %}
-                {% for i in profile.skills.all %}
-                <tr><td>{{i.skill}}</td></tr>
+                {% for profile in profiles %}
+                    {% for i in profile.skills.all %}
+                        
+                        <tr><td>{{i.skill}}</td></tr>
+                    {% endfor %}       
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="m-2"><a href="{% url 'addskills' %}" class="btn btn-success">Add Skill</a></div>
+    </div>
+        <div>
+        <div class="m-2"><h3>Education</h3></div>
+        <table class="table table-hover">
+            <tbody>
+            {% for profile in profiles%}
+                {% for i in profile.education.all %}
+                <tr>
+                    <td><b>Institute:</b> {{i.institute}}</td>
+                    <td><b>Course Completed:</b> {{i.course_completed}}</td>
+                    {% if i.date_started %}<td><b>From:</b> {{i.date_started}}</td>{% endif %}
+                    {% if i.date_ended %}<td><b>To:</b> {{i.date_ended}}</td>{% endif %}
+                </tr>
                 {% endfor %}          
             {% endfor %}
             </tbody>
         </table>
-        {% if not profiles %}No skills added{% endif %}
-        <div class="m-2"><a href="{% url 'addskills' %}" class="btn btn-success">Add Skill</a></div>
+        <div class="m-2"><a href="{% url 'addedu' %}" class="btn btn-success">Add Education</a></div>
     </div>
 </div>
 {% endblock body %}

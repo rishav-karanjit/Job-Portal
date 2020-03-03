@@ -19,6 +19,7 @@ class jseekerprofile(generic.ListView):
     template_name='Jobseeker/jprofile.html'
     context_object_name='profiles'
     def get_queryset(self):
+        print(JseekerProfile.objects.filter(user=self.request.user))
         return JseekerProfile.objects.filter(user=self.request.user)
 
 class jaddskills(generic.CreateView):
@@ -30,8 +31,18 @@ class jaddskills(generic.CreateView):
         instance.user_id=self.request.user.id
         instance.save()
         a=instance.id
-        print(a)
         return redirect('addproskills',a)
+
+class jaddedu(generic.CreateView):
+    model= JseekerEdu
+    template_name='Jobseeker/JAddedu.html'
+    fields=['institute','course_completed','date_started','date_ended']
+    def form_valid(self,form):
+        instance=form.save(commit=False)
+        instance.user_id=self.request.user.id
+        instance.save()
+        a=instance.id
+        return redirect('addproedu',a)
 
 def Applyvacancy(request, pk):
     vacancys = Vacancy.objects.get(id=pk)
@@ -46,5 +57,13 @@ def JobProfileUpdate(request,pk):
     user=request.user.id
     j=JseekerProfile.objects.create(user_id=user)
     j.skills.add(skill.id)
+    j.save()
+    return redirect('JProfile')
+
+def JobProeduUpdate(request,pk):
+    edu=JseekerEdu.objects.get(id=pk)
+    user=request.user.id
+    j=JseekerProfile.objects.create(user_id=user)
+    j.education.add(edu.id)
     j.save()
     return redirect('JProfile')

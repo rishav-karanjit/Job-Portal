@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+Applied Vacancy
+{% endblock title %}
+{% block body %}
+
+    {% for i in vacancys %}
+        Title:{{i.vacancy}}<br>
+        Company:{{i.vacancy.company}}<br>
+        Applied Date:{{i.applieddate}}<br>
+        Job Category:{{i.vacancy.get_jobcategory_display}}<br>
+        description:{{i.vacancy.description|safe}}
+        status:{{i.get_status_display}}<br>
+
+<br>
+    {% endfor %}
+{% endblock %}

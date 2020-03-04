@@ -6,10 +6,10 @@ Vacancy
     {% for i in vacancys %}
     <div>
         Company:{{i.company}}
-        Category{{i.jobcategory}}
-        Title{{i.title}}
+        Category:{{i.get_jobcategory_display}}
+        Title:{{i.title}}
         date_added:{{i.date_added}}
-        deadline{{i.deadline}}
+        deadline:{{i.deadline}}
         Description:{{i.description|safe}}
         {% comment %} Added by:{{i.user.first_name}}<br>{% endcomment %}
         {% for j in i.vac.all %}

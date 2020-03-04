@@ -44,6 +44,14 @@ class jaddedu(generic.CreateView):
         a=instance.id
         return redirect('addproedu',a)
 
+class AppliedVacancy(generic.ListView):
+    model=VacancyApply
+    template_name='Jobseeker/appliedvac.html'
+    context_object_name='vacancys'
+    def get_queryset(self):
+        print(VacancyApply.objects.filter(user=self.request.user))
+        return VacancyApply.objects.filter(user=self.request.user)
+
 def Applyvacancy(request, pk):
     vacancys = Vacancy.objects.get(id=pk)
     user = request.user   

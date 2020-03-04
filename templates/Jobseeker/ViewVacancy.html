@@ -11,8 +11,13 @@ Vacancy
         date_added:{{i.date_added}}
         deadline{{i.deadline}}
         Description:{{i.description|safe}}
-        Added by:{{i.user.first_name}}<br>
-        <a href="{% url 'ApplyVacancy' i.id%}" class="btn btn-success">Apply</a>
+        {% comment %} Added by:{{i.user.first_name}}<br>{% endcomment %}
+        {% for j in i.vac.all %}
+            {% if not j.user.id is request.user.id and j.vacancy.id is i.id%}
+                <a href="{% url 'ApplyVacancy' i.id%}" class="btn btn-success">Apply </a>
+            {% endif %}      
+        {% endfor %}
+        {% if not i.vac.all %}<a href="{% url 'ApplyVacancy' i.id%}" class="btn btn-success">Apply </a>{% endif %} 
     </div>
     {% endfor %}
 {% endblock body %}

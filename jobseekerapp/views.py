@@ -50,7 +50,7 @@ def Applyvacancy(request, pk):
     vacancy = vacancys
     jseeker = VacancyApply(vacancy=vacancy,user=user)
     jseeker.save()
-    return redirect('VacancyStatus') 
+    return redirect('JViewVacancy') 
 
 def JobProfileUpdate(request,pk):
     skill=JseekerSkill.objects.get(id=pk)

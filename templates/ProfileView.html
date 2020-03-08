@@ -23,14 +23,19 @@
                         <td> Gender</td>
                         <td> {{profile.get_Gender_display}}</td>
                     </tr>
+                    {% if profile.currentcompany %}
                     <tr>
                         <td>Current Company</td>
                         <td>{{profile.currentcompany}}</td>
                     </tr>
+                    {% endif %}
+                    {% if i.resume %}
                     <tr>
                         <td>Resume</td>
                         <td>{{i.resume.url}}</td>
                     </tr>
+                    {% endif %}
+
             </tbody>
         </table>
     </div>

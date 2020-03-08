@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.views import generic
 from recruiterapp.models import *
 from jobseekerapp.models import *
+from Jobapp.models import *
+from django.db.models import Q
 
 # Create your views here.
 class DashboardView(generic.TemplateView):
@@ -49,7 +51,6 @@ class AppliedVacancy(generic.ListView):
     template_name='Jobseeker/appliedvac.html'
     context_object_name='vacancys'
     def get_queryset(self):
-        print(VacancyApply.objects.filter(user=self.request.user))
         return VacancyApply.objects.filter(user=self.request.user)
 
 def Applyvacancy(request, pk):
@@ -59,7 +60,7 @@ def Applyvacancy(request, pk):
     jseeker = VacancyApply(vacancy=vacancy,user=user)
     jseeker.save()
     return redirect('JViewVacancy') 
-
+    
 def JobProfileUpdate(request,pk):
     skill=JseekerSkill.objects.get(id=pk)
     user=request.user.id

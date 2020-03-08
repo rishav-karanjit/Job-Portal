@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="Suggested-connection">
+        <a href="{% url 'SuggestedUser' %}"><button type="button" class="btn btn-outline-info mr-3">Suggested Connection</button></a>
+        <a href="{% url 'Friendrequests' %}"><button type="button" class="btn btn-outline-info mr-3">Connection Requests</button></a>
+    </div>
+    {% for i in myself%}
+        {% if i.connections.all %}
+        <h2 class="m-4 text-center">Your Connections</h2>
+        <div class="main-part">
+            {% for connection in i.connections.all %}
+                <div class="card w-25 m-2">
+                    <img class="card-img-top" src="{{connection.avatar.url}}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{connection.first_name}} {{connection.last_name}}</h4>
+                        <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="m-4">You have not added any connection</div>
+        {% endif %}
+    {% endfor %}
+    
+{% endblock body %}

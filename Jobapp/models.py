@@ -23,7 +23,14 @@ class User(AbstractUser):
     Gender=models.IntegerField(choices=Gender_choices,default=1)
     profession=models.CharField(max_length=100,blank=True)
     resume = models.FileField(upload_to="File/",blank=True)
+    connections=models.ManyToManyField("self")
 
     def __str__(self):
         return(self.email)
-        
+
+# class profile(models.Model):
+#     user
+
+class frequest(models.Model):
+    from_person = models.ForeignKey(User, related_name='from_people',on_delete=models.CASCADE)
+    to_person = models.ForeignKey(User, related_name='to_people',on_delete=models.CASCADE)

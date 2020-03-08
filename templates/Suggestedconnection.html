@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+    {% for u in users %}
+        {% if not request.user in u.connections.all %}
+            <img class="rounded-circle" src="{{u.avatar.url}}" width="150" height="100">
+            {{u.first_name}}
+            {{u.last_name}}    
+            {{u.currentcompany}}
+            {{u.profession}}
+            <a href="{% url 'addfriend' u.id%}" class="btn btn-success">Connect</a>
+        {% endif %}        
+    {% endfor %}
+{% endblock body %}

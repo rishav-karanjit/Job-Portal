@@ -1,13 +1,19 @@
 {% extends "base.html" %}
 {% block body %}
+<h1>Suggested Connections</h1>
+<hr>
+    <div class="main-part">
     {% for u in users %}
         {% if not request.user in u.connections.all %}
-            <img class="rounded-circle" src="{{u.avatar.url}}" width="150" height="100">
-            {{u.first_name}}
-            {{u.last_name}}    
-            {{u.currentcompany}}
-            {{u.profession}}
-            <a href="{% url 'addfriend' u.id%}" class="btn btn-success">Connect</a>
-        {% endif %}        
+            <div class="card w-25 m-2">
+                <img class="card-img-top" src="{{u.avatar.url}}">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{u.first_name}} {{u.last_name}}<br>{{u.profession}}</h4>
+                    <a href="{% url 'ViewProfile' u.id%}" class="btn btn-info btn-block mt-1 p-3">View Profile</a>
+                    <a href="{% url 'addfriend' u.id%}" class="btn btn-success btn-block mt-1">Connect</a>
+                </div>
+            </div>
+        {% endif %}  
     {% endfor %}
+    </div>
 {% endblock body %}

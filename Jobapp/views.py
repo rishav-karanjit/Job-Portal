@@ -35,11 +35,6 @@ def accept_friend(request, userid):
     friendrequest = frequest.objects.filter(from_person=from_user,to_person=request.user).first()
     from_user.connections.add(to_user)
     to_user.connections.add(from_user)
-    
-    # user1=friendrequest.to_person
-    # user2=from_user
-    # user1.connects.add(user2)
-    # user2.connections.add(user1)
     friendrequest.delete()
     return redirect('Userlist')
 
@@ -58,3 +53,8 @@ class Myconnection(generic.ListView):
 
     def get_queryset(self):
         return User.objects.filter(id=self.request.user.id)
+
+class ViewProfile(generic.DetailView):
+    model=User
+    template_name="ProfileView.html"
+    context_object_name='profile'

@@ -1,14 +1,11 @@
-{% extends "base.html" %}
-{% block title %}
-My profile
-{% endblock title %}
+{% extends 'base.html' %}
 {% block body %}
     <div class="container">
         <div class="media border p-1">
             <div class="row media-body">
-                <div class="col-sm-1"><img class="rounded-circle" src="{{user.avatar.url}}" width="150" height="100"></div>
-                    <div class="col-sm-11 text-center"><h1>{{user.first_name}} {{user.last_name}}</h1>
-                        {{user.profession}}    
+                <div class="col-sm-1"><img class="rounded-circle" src="{{profile.avatar.url}}" width="150" height="100"></div>
+                    <div class="col-sm-11 text-center"><h1>{{profile.first_name}} {{profile.last_name}}</h1>
+                        {{profile.profession}}    
                     </div> 
                 </div>
             </div>
@@ -16,19 +13,19 @@ My profile
                 <tbody>
                     <tr>
                         <td> Email</td>
-                        <td> {{user}}</td>
+                        <td> {{profile}}</td>
                     </tr>
                     <tr>
                         <td>Mobile_Number</td>
-                        <td>{{user.Mobile_Number}}</td>
+                        <td>{{profile.Mobile_Number}}</td>
                     </tr>
                     <tr>
                         <td> Gender</td>
-                        <td> {{user.get_Gender_display}}</td>
+                        <td> {{profile.get_Gender_display}}</td>
                     </tr>
                     <tr>
                         <td>Current Company</td>
-                        <td>{{user.currentcompany}}</td>
+                        <td>{{profile.currentcompany}}</td>
                     </tr>
                     <tr>
                         <td>Resume</td>
@@ -36,6 +33,5 @@ My profile
                     </tr>
             </tbody>
         </table>
-        <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>
     </div>
 {% endblock body %}

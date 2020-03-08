@@ -8,4 +8,5 @@ urlpatterns = [
     path("acceptfriend/<int:userid>/",views.accept_friend,name="acceptfriend"),
     path("friendrequest/",views.Friendrequests.as_view(),name="Friendrequests"),
     path("myconnection/",views.Myconnection.as_view(),name="myconnection"),
+    path("ViewProfile/<int:pk>/",views.ViewProfile.as_view(),name="ViewProfile"),
 ]

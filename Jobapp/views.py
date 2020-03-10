@@ -25,7 +25,7 @@ class SuggestedUser(generic.ListView):
 def sent_friend(request, userid):
     user = User.objects.get(id=userid)
     frequest.objects.get_or_create(from_person=request.user,to_person=user)
-    return redirect('Userlist')
+    return redirect('myconnection')
 
 def accept_friend(request, userid):
     from_user = get_object_or_404(User,id=userid)
@@ -36,7 +36,7 @@ def accept_friend(request, userid):
     from_user.connections.add(to_user)
     to_user.connections.add(from_user)
     friendrequest.delete()
-    return redirect('Userlist')
+    return redirect('myconnection')
 
 class Friendrequests(generic.ListView):
     model=frequest
@@ -57,4 +57,14 @@ class Myconnection(generic.ListView):
 class ViewProfile(generic.DetailView):
     model=User
     template_name="ProfileView.html"
+    context_object_name='profile'
+
+class ViewRProfile(generic.DetailView):
+    model=User
+    template_name="ProfileRView.html"
+    context_object_name='profile'
+
+class ViewSProfile(generic.DetailView):
+    model=User
+    template_name="ProfileSView.html"
     context_object_name='profile'

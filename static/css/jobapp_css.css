@@ -18,3 +18,20 @@
     padding:0.3em;
     border-bottom: solid khaki;
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:black; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+.row1{
+    border-top : 4px solid coral;
+}
+

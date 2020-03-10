@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block body %}
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'myconnection' %}">My Network</a></li>
+    <li class="breadcrumb-item active">Suggested Connection</li>
+</ul>
+
 <h1>Suggested Connections</h1>
 <hr>
     <div class="main-part">
@@ -9,7 +14,7 @@
                 <img class="card-img-top" src="{{u.avatar.url}}">
                 <div class="card-body">
                     <h4 class="card-title text-center">{{u.first_name}} {{u.last_name}}<br>{{u.profession}}</h4>
-                    <a href="{% url 'ViewProfile' u.id%}" class="btn btn-info btn-block mt-1 p-3">View Profile</a>
+                    <a href="{% url 'ViewSProfile' u.id%}" class="btn btn-info btn-block mt-1 p-3">View Profile</a>
                     <a href="{% url 'addfriend' u.id%}" class="btn btn-success btn-block mt-1">Connect</a>
                 </div>
             </div>

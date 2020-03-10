@@ -1,10 +1,25 @@
 {% extends 'base.html' %}
 {% block body %}
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'myconnection' %}">My Network</a></li>
+    <li class="breadcrumb-item active">Connection Request</li>
+</ul>
+    <table class="table table-borderless">
     {% for r in requests %}
-        <img class="rounded" src="{{r.from_person.avatar.url}}" width="70" height="70">
-        {{r.from_person.first_name}}
-        {{r.from_person.last_name}}
-        {{r.from_person.profession}}
-        <a href="{% url 'acceptfriend' r.from_person.id%}" class="btn btn-success">Accept</a>
-    {% endfor %}
+        <tr class="row1">
+            <td rowspan="2"><a href="{% url 'ViewProfile' r.from_person.id%}"><img src="{{r.from_person.avatar.url}}" class="rounded" width="100px"></a></td>
+            <td><a href="{% url 'ViewProfile' r.from_person.id%}"><h4>{{r.from_person.first_name}} {{r.from_person.last_name}}</h4></a></td>
+            <td><a href="{% url 'ViewSProfile' r.from_person.id%}" class="btn btn-info">View Profile</a></td>             
+            <td><a href="{% url 'acceptfriend' r.from_person.id%}" class="btn btn-success">Accept</a></td>
+        </tr>
+        <tr class="row2">
+            <td>{{r.from_person.profession}} 
+                {% if r.from_person.currentcompany %}
+                    in {{r.from_person.currentcompany}}
+                {% endif %}
+            </td>
+        </tr>
+     {% endfor %}
+     </table>
+     <hr>
 {% endblock body %}

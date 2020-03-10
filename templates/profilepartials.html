@@ -1,0 +1,38 @@
+        <div class="media border p-1">
+            <div class="row media-body">
+                <div class="col-sm-1"><img class="rounded-circle" src="{{profile.avatar.url}}" width="150" height="100"></div>
+                    <div class="col-sm-11 text-center"><h1>{{profile.first_name}} {{profile.last_name}}</h1>
+                        {{profile.profession}}    
+                    </div> 
+                </div>
+            </div>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td> Email</td>
+                        <td> {{profile}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile_Number</td>
+                        <td>{{profile.Mobile_Number}}</td>
+                    </tr>
+                    <tr>
+                        <td> Gender</td>
+                        <td> {{profile.get_Gender_display}}</td>
+                    </tr>
+                    {% if profile.currentcompany %}
+                    <tr>
+                        <td>Current Company</td>
+                        <td>{{profile.currentcompany}}</td>
+                    </tr>
+                    {% endif %}
+                    {% if i.resume %}
+                    <tr>
+                        <td>Resume</td>
+                        <td>{{i.resume.url}}</td>
+                    </tr>
+                    {% endif %}
+
+            </tbody>
+        </table>
+        </div>

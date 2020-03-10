@@ -13,7 +13,7 @@
                     <img class="card-img-top" src="{{connection.avatar.url}}">
                     <div class="card-body">
                         <h4 class="card-title">{{connection.first_name}} {{connection.last_name}}</h4>
-                        <a href="#" class="btn btn-primary stretched-link">See Profile</a>
+                        <a href="{% url 'ViewProfile' i.id%}" class="btn btn-primary stretched-link">See Profile</a>
                     </div>
                 </div>
             {% endfor %}

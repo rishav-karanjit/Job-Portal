@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.views import generic
 from .models import *
-
+from jobseekerapp.models import *
+from Jobapp.models import *
 
 # Create your views here.
 class DashboardView(generic.TemplateView):
@@ -16,7 +17,7 @@ class PostVacancy(generic.CreateView):
         instance.company=self.request.user.currentcompany
         instance.user_id=self.request.user.id
         instance.save()
-        return redirect('Postvacancy')
+        return redirect('ViewVacancy')
 
 class ViewVacancy(generic.ListView):
     model= Vacancy
@@ -44,12 +45,14 @@ class RecruiterDetailsUpdateView(generic.UpdateView):
         instance=form.save()
         return redirect('Recruiterprofile')
 
-# class RecruiterGDetailsCreateView(generic.CreateView):
-#     model=recruiterprofile
-#     template_name='Recruiters/RecruiterDetailsUpdateView.html'
-#     fields=['Gender','currentcompany','profession','resume']
-#     def form_valid(self,form):
-#         instance=form.save(commit=False)
-#         instance.user=self.request.user
-#         instance.save()
-#         return redirect('Recruiterprofile')
+class ViewApplicants(generic.ListView):
+    model=VacancyApply
+    template_name='Recruiters/viewapplicants.html'
+    context_object_name='applicants'
+    def get_queryset(self):
+        return VacancyApply.objects.filter(vacancy__user=self.request.user.id)
+
+class ViewAProfile(generic.DetailView):
+    model=User
+    template_name="ProfileAView.html"
+    context_object_name='profile'

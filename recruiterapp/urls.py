@@ -8,4 +8,6 @@ urlpatterns = [
     path('viewvacancy/',views.ViewVacancy.as_view(),name="ViewVacancy"),
     path('recruiterprofile/',views.RecruiterProfileView.as_view(),name="Recruiterprofile"),
     path('recruiterprofile/updatedetails/<int:pk>/',views.RecruiterDetailsUpdateView.as_view(),name="Recruiterupdateprofile"),
+    path('applicants/',views.ViewApplicants.as_view(),name="Viewappli"),
+    path("ViewAProfile/<int:pk>/",views.ViewAProfile.as_view(),name="ViewAProfile"),
 ]

@@ -7,6 +7,9 @@ Post Vacancy
 {% if request.user.currentcompany %}
     <h2 class="text-center">Post Vacancy</h2>
     <div class="mx-auto">
+    <div class="alert alert-info" role="alert">
+        Posting for Company:{{user.currentcompany}}
+    </div>
     <form method="POST" class="post-form">
         {% csrf_token %}
         {{form|crispy}}

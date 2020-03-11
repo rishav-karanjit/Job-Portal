@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% for i in vacancys %}
+    <div>
+        Title:{{i.vacancy}}<br>
+        Applied Date:{{i.applieddate}}<br>
+        Status:{{i.status}}<br>
+    </div>
+{% endfor %}
+{% endblock body %}

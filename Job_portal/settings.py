@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'jobseekerapp',
     'crispy_forms',
     'tinymce',
+    'django_twilio',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,9 @@ LOGOUT_REDIRECT_URL = 'homepage'
 
 #Crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#twilio
+
+TWILIO_ACCOUNT_SID = 'ACbf6d48d98d99ac48ce22e93f799fd45c'
+TWILIO_AUTH_TOKEN = '972c6189ff5bf2ae9989c6c591729f20'
+TWILIO_PHONE_NUMBER= '+15809825299'

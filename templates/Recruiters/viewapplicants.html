@@ -6,8 +6,8 @@
         {{a.user.first_name}}
         {{a.user.last_name}}
         <a href="{% url 'ViewAProfile' a.user.id%}" class="btn btn-secondary">View Profile</a>
-        <a href="#" class="btn btn-success">Accept</a>
-        <a href="#}" class="btn btn-danger">Reject</a>
+        <a href="{% url 'AcceptAppli' a.id%}" class="btn btn-success">Accept</a>
+        <a href="{% url 'RejectAppli' a.id%}" class="btn btn-danger">Reject</a>
     </div>
 {% endfor %}
 {% endblock body %}

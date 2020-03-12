@@ -14,7 +14,7 @@
         {% if not request.user.is_authenticated %}
             <a href="{% url 'signup' %}"><button type="button" class="btn btn-lg btn-success">Signup</button></a>     
         {% else %}
-            <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-lg btn-secondary">Dashboard</button></a>        
+            <a href="{% url 'home' %}"><button type="button" class="btn btn-lg btn-secondary">Dashboard</button></a>        
         {% endif %}
         </ul>
 

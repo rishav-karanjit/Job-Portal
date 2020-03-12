@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+{% for i in vacancys %}
+    {% if i.user in request.user.connections.all %}
+        <div class="media border p-3 m-3">
+            <div class="media-body">
+                <h4>{{i.title}} Vacancy <small><i>Posted on {{i.date_added}}</i></small></h4>
+                <div id="abc" class="collapse">
+                    {{i.description|safe}}
+                </div>
+            Deadline:{{i.deadline}}  <br>
+            Posted by:{{i.user.first_name}} {{i.user.last_name}}
+
+            </div>
+            <div>
+                <img src="{{user.avatar.url}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;"><br>
+                {% if not i.vac.all %}<a href="{% url 'ApplyVacancy' i.id%}" class="btn btn-success mr-4 mt-3">Apply</a>
+                {% else %}<button class="btn btn-secondary mr-3 mt-3" disabled>Applied</button>
+                {% endif %} 
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-xs showdescription" data-toggle="collapse" data-target="#abc">Show/Hide Description</button>
+    {% endif %}
+
+
+{% endfor %}
+{% endblock body %}

@@ -6,8 +6,12 @@ from Jobapp.models import *
 from django.db.models import Q
 
 # Create your views here.
-class DashboardView(generic.TemplateView):
-    template_name='Jobseeker/dashboard.html'
+class home(generic.ListView):
+    model=Vacancy
+    template_name='Jobseeker/home.html'
+    context_object_name='vacancys'
+    def get_queryset(self):
+        return Vacancy.objects.all()
 
 class ViewVacancy(generic.ListView):
     model= Vacancy

@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('dashboard/',views.DashboardView.as_view(),name="Jdashboard"),
+    path('home/',views.home.as_view(),name="home"),
     path('viewvacancy/',views.ViewVacancy.as_view(),name="JViewVacancy"),
     path("applyvacancy/<int:pk>",views.Applyvacancy,name="ApplyVacancy"),   
     path("profile/",views.jseekerprofile.as_view(),name="JProfile"),

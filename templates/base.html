@@ -13,6 +13,13 @@
   <link href="{% static 'css/recruiter_css.css' %}" rel="stylesheet">
   <link href="{% static 'css/jobseeker_css.css' %}" rel="stylesheet">
   <link href="{% static 'css/jobapp_css.css' %}" rel="stylesheet">
+  <style>
+    .showdescription {
+    position: fixed;
+    bottom: 10px;
+    right:10px;
+    }
+  </style>
 </head>
 <body>
 
@@ -30,7 +37,7 @@
         <a href="{% url 'myconnection' %}" class="list-group-item list-group-item-action bg-light">My Network</a>
         <a class="nav-link" href="{% url 'logout' %}"><button type="button" class="btn btn-danger">Logout</button></a>
       {% elif  request.user.role == 'J' %}
-        <a href="{% url 'Jdashboard' %}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="{% url 'home' %}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="{% url 'JProfile' %}" class="list-group-item list-group-item-action bg-light">Profile</a>
         <a href="{% url 'JViewVacancy' %}" class="list-group-item list-group-item-action bg-light">View vacancys</a>
         <a href="{% url 'AppliedVacancy' %}" class="list-group-item list-group-item-action bg-light">Applied Vacancy</a>

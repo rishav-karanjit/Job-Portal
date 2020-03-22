@@ -1,64 +1,101 @@
 {% load static %}
 <html>
 <head>
-  <title>JobPortal</title>
+    <title>JobPortal</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'css/homepage.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <ul>
-        {% if not request.user.is_authenticated %}
-            <a href="{% url 'signup' %}"><button type="button" class="btn btn-lg btn-success">Signup</button></a>     
-        {% else %}
-            <a href="{% url 'home' %}"><button type="button" class="btn btn-lg btn-secondary">Dashboard</button></a>        
-        {% endif %}
-        </ul>
-
-        
-        <ul class="nav navbar-brand mx-auto">
-            <a class="nav-link text-dark display-4" href="{%url 'home'%}"><li class="nav-item">JobPortal</li></a>
-        </ul>
-        <ul>
-            {% if not request.user.is_authenticated %}
-                <a href="{% url 'login' %}"><button type="button" class="btn btn-primary btn-lg">Login</button></a>
-            {% else %}
-                <a href="{% url 'logout' %}"><button type="button" class="btn btn-danger btn-lg">Logout</button></a>
-            {% endif %}
-        </ul>
-    </nav>
-
-    {% comment %} style="background-color:#EEE2DC" EDC7B7 {% endcomment %}
-    <div  class="p-4 display-4 text-center bg-light">
-        <h6 class="display-1 text-center m-5 p-5 text-secondary" style="font-family:ARVO">Welcome to your professional community</h6>
-    </div>
-    <div style="background-color:#EEE2DC" class="p-4 display-4 text-center">
-        <h3 class="display-1 text-center m-5 p-5 text-body" style="font-family:TISA">Find the right job or internship for you</h3>            
-    </div>
-    <div style="background-color:#BAB2B5"  class="p-4 display-4 text-center">
-        <h6 class="display-1 text-center m-5 p-5 text-secondary" style="font-family:OPEN SANS">Post your job for millions of people to see</h6>
-    </div>  
-    <div style="background-color:#AC3B61" class="p-4 display-4 text-center">
-        <h3 class="display-1 text-center m-5 p-5 text-body" style="font-family:MERRIWEATHER">Connect with people who can help</h3>                           
-    </div>
-    {% if not request.user.is_authenticated %}
-    <a href="{% url 'signup' %}">
-        <div class="btn btn-primary p-4 display-4 text-center" id="Signup">
-            <h3 class="display-1 text-center m-5 p-5 text-body" style="font-family:ARIAL">Sign Up Now</h3>                           
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+            <ul>
+                {% if not request.user.is_authenticated %}
+                    <button href="{% url 'signup' %}" class="Signup btn-lg">Signup</button>     
+                {% else %}
+                    {% if request.user.role == 'R'%}
+                        <a href="{% url 'RDashboard' %}"><button type="button" class="Dashboard btn-lg">Dashboard</button></a>
+                    {% else %}
+                        <a href="{% url 'JDashboard' %}"><button type="button" class="Dashboard btn-lg">Dashboard</button></a>
+                    {% endif %}
+                {% endif %}
+            </ul>      
+            <ul class="nav navbar-brand mx-auto">
+                <a class="nav-link text-light display-4" href="{%url 'homepage'%}"><li class="nav-item">JobPortal</li></a>
+            </ul>
+            <ul>
+                {% if not request.user.is_authenticated %}
+                    <a href="{% url 'login' %}"><button type="button" class="login btn-lg">Login</button></a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><button type="button" class="logout btn-lg">Logout</button></a>
+                {% endif %}
+            </ul>
+        </nav>
+        <div id="searchjob">
+            <form class="form-inline" action="">
+                <label for="Search">Search for job:</label>
+                <input 
+                    class="form-control search-box mt-3 ml-3"
+                    type="Search"
+                    placeholder="Find Vacancy..."
+                    name="search_term"
+                    value="{{search_term}}"
+                >  
+                <a type="submit" class="submit ml-5 mt-3">Submit</a></div>
+            </form>
         </div>
-    </a>
-    {% endif %}
-     <!-- Footer -->
-    <footer class="page-footer font-small bg-secondary">
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2020 Copyright: JobPortal</div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-</div>
+        <div id="RecentJob">
+            <span class="display-4">Recent Jobs</span>
+            <button onclick="myFunction()" class="descriptionbtn" id="myBtn">Show Description</button>
+
+        {% for i in vacancys %}
+            <div class="media border p-3 m-3">
+                <div class="media-body">
+                    <h4>{{i.title}} Vacancy <small><i>Posted on {{i.date_added}}</i></small></h4>
+                    <span class="Description">{{i.description|safe}}</span>
+                    Deadline:{{i.deadline}}  <br>
+                    
+                    </div>
+                    <div class="text-center">
+                        <b class="mr-4">Posted by: {{i.user.first_name}} {{i.user.last_name}}</b><br>
+                        <img src="{{i.user.avatar.url}}" class="ml-5 mt-3 rounded-circle" style="width:60px;">
+                        
+                    </div>       
+            </div>
+{% endfor %}
+        
+        </div>
+        <!-- Footer -->
+        <footer class="page-footer font-small bg-secondary">
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">© 2020 Copyright: JobPortal</div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
     
+    <script>
+    function myFunction() {
+        var btnText = document.getElementById("myBtn");
+        var Description = document.getElementsByClassName("Description");
+        if (Description[0].style.display == "inline") {
+            var i;
+            btnText.innerHTML = "Show Description"; 
+            for(i in Description){
+                Description[i].style.display = "none";
+            }             
+        } 
+        else {
+            var i;
+            btnText.innerHTML = "Hide Description";
+            for(i in Description){
+                Description[i].style.display = "inline";
+            } 
+        }
+    }
+    </script>
+
+</body>   
 
 </html>

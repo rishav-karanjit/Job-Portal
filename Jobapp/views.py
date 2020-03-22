@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .models import *
 from django.views.generic.base import TemplateView
+from recruiterapp.models import *
 from .form import *
 # Create your views here.
 
@@ -11,8 +12,12 @@ class SignUpView(generic.CreateView):
     template_name='registration/signup.html'
     success_url=reverse_lazy('home')
 
-class HomeView(TemplateView):
-    template_name = "home.html"
+class HomeView(generic.ListView):
+    model=Vacancy
+    template_name='home.html'
+    context_object_name='vacancys'
+    def get_queryset(self):
+        return Vacancy.objects.all()
 
 class SuggestedUser(generic.ListView):
     model=User

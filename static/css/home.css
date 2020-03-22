@@ -1,0 +1,106 @@
+.container-fluid {
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto
+}
+body{
+    color:white;
+}
+nav{
+    margin: 0px;
+}
+#searchjob{
+    height:500px;
+    margin: 0px;
+    padding:200px;
+    text-align: center;
+    font-size: 4em;
+    background-image: linear-gradient(#282828,#031321);
+}
+.submit{
+    position: relative;
+    padding: 15px 30px;
+    color: #2196f3;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 24px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+.submit:hover{
+    color: #255784;
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+#RecentJob{
+    padding:2em;
+    color: black;
+    background-image: linear-gradient(white,#808080);
+    min-height:500px;
+}
+.descriptionbtn {
+    position: absolute;
+    right:100;
+    background-color: darkgoldenrod; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 20px gray;
+}
+.Description{
+    display:none;
+}
+
+button{
+    position: relative;
+    padding: 15px 30px;
+    border:none;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 24px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.signup{
+    color: white;
+    background: darkgreen;
+}
+.signup:hover{
+    box-shadow: 0 0 10px #78f078, 0 0 40px #78f078, 0 0 80px #78f078;
+}
+
+.login{
+    color: white;
+    background: #3333f8;
+}
+
+.login:hover{
+    box-shadow: 0 0 10px #7f7ff8, 0 0 40px #7f7ff8, 0 0 80px #7f7ff8;
+}
+
+.logout{
+    color:white;
+    background:#f74444;
+}
+
+.logout:hover{
+    box-shadow: 0 0 10px #ff7777, 0 0 40px #ff7777, 0 0 80px #ff7777;
+}
+
+.Dashboard{
+    color:white;
+    background:#4b4646;
+}
+
+.Dashboard:hover{
+    box-shadow: 0 0 10px #635c5c, 0 0 40px #635c5c, 0 0 80px #635c5c;
+}

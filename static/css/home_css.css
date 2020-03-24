@@ -11,9 +11,9 @@ nav{
     margin: 0px;
 }
 #searchjob{
-    height:500px;
+    min-height: 30%;
     margin: 0px;
-    padding:200px;
+    padding: 2.4em;
     text-align: center;
     font-size: 4em;
     background-image: linear-gradient(#282828,#031321);

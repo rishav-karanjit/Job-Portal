@@ -11,4 +11,5 @@ urlpatterns = [
     path("Mynetworks/SuggestedProfile/ViewProfile/<int:pk>/",views.ViewSProfile.as_view(),name="ViewSProfile"),
     path("Mynetworks/ViewProfile/<int:pk>/",views.ViewProfile.as_view(),name="ViewProfile"),
     path("Mynetworks/ConnectionRequest/ViewProfile/<int:pk>/",views.ViewRProfile.as_view(),name="ViewRProfile"),
+    path("search/",views.Search.as_view(),name="search"),
 ]

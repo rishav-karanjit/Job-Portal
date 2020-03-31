@@ -5,6 +5,8 @@ from .models import *
 from django.views.generic.base import TemplateView
 from recruiterapp.models import *
 from .form import *
+from django.db.models import Q
+
 # Create your views here.
 
 class SignUpView(generic.CreateView):
@@ -18,6 +20,25 @@ class HomeView(generic.ListView):
     context_object_name='vacancys'
     def get_queryset(self):
         return Vacancy.objects.all()
+
+class Search(generic.ListView):
+    def get(self, request, *args, **kwargs):
+        search_term=request.GET['search_term']
+        Category=request.GET['Category']
+        Company=request.GET['Company']
+        search_result=Vacancy.objects.filter(
+            Q(title__icontains=search_term)|
+            Q(jobcategory=Category)|
+            Q(company=Company))
+        
+        context={
+            'search_term': search_term,
+            'Category':Category,
+            'Company':Company,
+            'vacancys':search_result
+        }
+        print(context)
+        return render(request,'search.html',context)
 
 class SuggestedUser(generic.ListView):
     model=User

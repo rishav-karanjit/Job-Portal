@@ -3,7 +3,6 @@ from django.views import generic
 from recruiterapp.models import *
 from jobseekerapp.models import *
 from Jobapp.models import *
-from django.db.models import Q
 
 # Create your views here.
 class home(generic.ListView):

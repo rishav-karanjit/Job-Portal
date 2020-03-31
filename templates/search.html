@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+    <h5>Search Results</h5>
+    {% for vacancy in vacancys %}
+            <div class="media border p-3 m-3">
+                <div class="media-body">
+                    <h4>{{vacancy.title}} Vacancy <small><i>Posted on {{vacancy.date_added}}</i></small></h4>
+                    <span class="Description">{{vacancy.description|safe}}</span>
+                    Deadline:{{vacancy.deadline}}  <br>
+                    {% if request.user.role == 'J' %}
+                            {% if not vacancy.vac.all %}<a href="{% url 'ApplyVacancy' vacancy.id%}" class="btn btn-success">Apply </a>
+                            {% else %}<button class="btn btn-secondary" disabled>Applied</button>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="text-center">
+                    <b class="mr-4">Posted by: {{vacancy.user.first_name}} {{vacancy.user.last_name}}</b><br>
+                    <img src="{{vacancy.user.avatar.url}}" class="ml-5 mt-3 rounded-circle" style="width:60px;">  
+                </div>       
+            </div>
+    {% endfor %}
+{% endblock body %}

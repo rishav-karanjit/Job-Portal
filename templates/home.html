@@ -5,14 +5,14 @@
 
   <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/home_css.css' %}" rel="stylesheet">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
             <ul>
                 {% if not request.user.is_authenticated %}
-                    <button href="{% url 'signup' %}" class="Signup btn-lg">Signup</button>     
+                    <a href="{% url 'signup' %}"><button class="Signup btn-lg">Signup</button></a> 
                 {% else %}
                     {% if request.user.role == 'R'%}
                         <a href="{% url 'RDashboard' %}"><button type="button" class="Dashboard btn-lg">Dashboard</button></a>
@@ -33,23 +33,50 @@
             </ul>
         </nav>
         <div id="searchjob">
-            <form class="form-inline" action="">
-                <label for="Search">Search for job:</label>
-                <input 
-                    class="form-control search-box mt-3 ml-3"
-                    type="Search"
-                    placeholder="Find Vacancy..."
-                    name="search_term"
-                    value="{{search_term}}"
-                >  
-                <a type="submit" class="submit ml-5 mt-3">Submit</a></div>
+            Search for job:
+            <form class="form" action="{%url 'search'%}" method="GET">
+                
+                <div class="form-row mt-5">
+                    <div class="col">
+                        <input 
+                            class="form-control mt-3 ml-3"
+                            type="Search"
+                            placeholder="Vacancy"
+                            name="search_term"
+                            value="{{search_term}}"
+                        >
+                    </div>
+                    <div class="col">
+                            <input 
+                                class="form-control mt-3 ml-3"
+                                type="Search"
+                                placeholder="Company"
+                                name="Company"
+                                value="{{Company}}"
+                            >
+                    </div>
+                    <div class="col">
+                            <select name="Category" class="custom-select mt-3 ml-3" value="{{Category}}">
+                                <option value="0">Category</option>
+                                <option value="1">IT/ Telecomunication</option>
+                                <option value="2">Construction/ Engineering/ Architects</option>
+                                <option value="3">Health Care/ Pharma/ Biotech/ Medical/ R&D</option>
+                                <option value="4">Banking/ Insurance/ Financial Services</option>
+                                <option value="5">Teaching/ Education</option>
+                                <option value="6">General Management/ Administration</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <input type="submit" class="submit ml-5">
+                </div> 
             </form>
         </div>
         <div id="RecentJob">
             <span class="display-4">Recent Jobs</span>
             <button onclick="myFunction()" class="descriptionbtn" id="myBtn">Show Description</button>
 
-        {% for i in vacancys %}
+        {% for i in vacancys|slice:":5" %}
             <div class="media border p-3 m-3">
                 <div class="media-body">
                     <h4>{{i.title}} Vacancy <small><i>Posted on {{i.date_added}}</i></small></h4>
@@ -63,7 +90,7 @@
                         
                     </div>       
             </div>
-{% endfor %}
+        {% endfor %}
         
         </div>
         <!-- Footer -->

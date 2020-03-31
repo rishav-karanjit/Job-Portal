@@ -28,7 +28,9 @@
     <div class="bg-dark" id="sidebar-wrapper">
       <a href="{%url 'homepage'%}"><div class="sidebar-heading text-light">JobPortal</div></a>
       <div class="list-group list-group-flush">
-      <li class="list-group-item bg-dark list-group-item-action text-white text-center" style="letter-spacing: 0;"><b><img class="rounded-circle" src="{{user.avatar.url}}"  width="100%" height="100em">{{request.user.first_name}} {{request.user.last_name}}</b></li>
+      {% if request.user.is_authenticated %}
+        <li class="list-group-item bg-dark list-group-item-action text-white text-center" style="letter-spacing: 0;"><b><img class="rounded-circle" src="{{user.avatar.url}}"  width="100%" height="100em">{{request.user.first_name}} {{request.user.last_name}}</b></li>
+      {% endif %}
       {% if request.user.role == 'R' %}
         <a href="{% url 'RDashboard'%}" class="list-group-item list-group-item-action bg-dark text-light">Dashboard
         </a>
@@ -59,7 +61,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light border-bottom bg-dark">
-        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+        <button class="btn btn-primary btn-lg" id="menu-toggle">Toggle Menu</button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -68,15 +70,9 @@
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link text-body font-weight-bolder" href="{% url 'home' %}">Home&nbsp&nbsp</a>
+              <a class="nav-link text-body font-weight-bolder" href="{% url 'homepage' %}">Home&nbsp&nbsp</a>
             </li>
             {% endif %}
-            <li>
-              <form class="form-inline" action="/action_page.php">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-              </form>
-            </li>
           </ul>
         </div>
       </nav>

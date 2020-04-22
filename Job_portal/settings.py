@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'tinymce',
     'django_twilio',
+    # 'jsapp',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'Job_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'JobPortaldb.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'JobPortaldatabase.sqlite3'),
     }
 }
 

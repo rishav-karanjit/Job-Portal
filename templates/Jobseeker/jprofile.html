@@ -4,40 +4,39 @@
 {% endblock title %}
 {% block body %}
 <div class="container">
-
     <div class="media p-1">
         <div class="row media-body">
             <div class="col-sm-1"><img class="rounded-circle" src="{{user.avatar.url}}" width="150" height="100"></div>
-            <div class="col-sm-11 text-center"><h1>{{user.first_name}} {{user.last_name}}</h1>
-                {{user.profession}}    
-            </div> 
+                <div class="col-sm-11 text-center"><h1>{{user.first_name}} {{user.last_name}}</h1>
+                    {{user.get_profession_display}}
+                </div> 
+            </div>
         </div>
-    </div>
-    <table class="table table-hover">
-        <tbody>
-            <tr>
-                <td> Email</td>
-                <td> {{user}}</td>
-            </tr>
-            <tr>
-                <td>Mobile_Number</td>
-                <td>{{user.Mobile_Number}}</td>
-            </tr>
-            <tr>
-                <td> Gender</td>
-                <td> {{user.get_Gender_display}}</td>
-            </tr>
-            <tr>
-                <td>Current Company</td>
-                <td>{{user.currentcompany}}</td>
-            </tr>
-            <tr>
-                <td>Resume</td>
-                <td>{{i.resume.url}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <td> Email</td>
+                    <td> {{user}}</td>
+                </tr>
+                <tr>
+                    <td>Mobile_Number</td>
+                    <td>{{user.Mobile_Number}}</td>
+                </tr>
+                <tr>
+                    <td> Gender</td>
+                    <td> {{user.get_Gender_display}}</td>
+                </tr>
+                <tr>
+                    <td>Current Company</td>
+                    <td>{{user.currentcompany}}</td>
+                </tr>
+                <tr>
+                    <td>Resume</td>
+                    <td>{{i.resume.url}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>
     <div>
         <div class="m-2"><h3>Skills</h3></div>
         <table class="table table-hover">
@@ -55,32 +54,33 @@
         <div class="m-2"><a href="{% url 'addskills' %}" class="btn btn-success">Add Skill</a></div>
     </div>
         <div>
-        <div class="m-2"><h3>Education</h3></div>
-        <table class="table table-hover">
-            <tbody>
-            {% for profile in profiles%}
-                {% for i in profile.education.all %}
-                <tr>
-                    <td class="text-center">
-                        <b>{{i.institute}}</b><br>{{i.degree}} in {{i.field_of_study}}
-                    </td>
-                    <td class="text-center">
-                    {% if i.date_started %}
-                        {{i.date_started}}
-                    {% endif %}
-                    {% if i.date_ended %}
-                        {% if i.date_started %}-{% else %}Till{% endif %} {{i.date_ended}}
-                    {% endif %}
-                    </td>
-                    <td>
-                        <a href="{% url 'edudeleteview' i.id %}" class="btn btn-danger">X</a>
-                    </td>
-                </tr>
-                {% endfor %}          
-            {% endfor %}
-            </tbody>
-        </table>
-        <div class="m-2"><a href="{% url 'addedu' %}" class="btn btn-success">Add Education</a></div>
+            <div class="m-2"><h3>Education</h3></div>
+            <table class="table table-hover">
+                <tbody>
+                {% for profile in profiles%}
+                    {% for i in profile.education.all %}
+                    <tr>
+                        <td class="text-center">
+                            <b>{{i.institute}}</b><br>{{i.degree}} in {{i.field_of_study}}
+                        </td>
+                        <td class="text-center">
+                        {% if i.date_started %}
+                            {{i.date_started}}
+                        {% endif %}
+                        {% if i.date_ended %}
+                            {% if i.date_started %}-{% else %}Till{% endif %} {{i.date_ended}}
+                        {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'edudeleteview' i.id %}" class="btn btn-danger">X</a>
+                        </td>
+                    </tr>
+                    {% endfor %}          
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="m-2"><a href="{% url 'addedu' %}" class="btn btn-success">Add Education</a></div>
+        </div>
     </div>
 </div>
 {% endblock body %}

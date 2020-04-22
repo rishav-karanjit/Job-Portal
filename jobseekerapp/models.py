@@ -25,3 +25,4 @@ class JseekerProfile(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     skills=models.ManyToManyField(JseekerSkill)
     education=models.ManyToManyField(JseekerEdu)
+    appliedvacancy=models.ManyToManyField(VacancyApply)

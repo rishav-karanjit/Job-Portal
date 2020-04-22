@@ -12,7 +12,7 @@ from django.db.models import Q
 class SignUpView(generic.CreateView):
     form_class=Signupform
     template_name='registration/signup.html'
-    success_url=reverse_lazy('home')
+    success_url=reverse_lazy('homepage')
 
 class HomeView(generic.ListView):
     model=Vacancy

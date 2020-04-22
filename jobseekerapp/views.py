@@ -5,12 +5,19 @@ from jobseekerapp.models import *
 from Jobapp.models import *
 
 # Create your views here.
-class home(generic.ListView):
+class DashBoard(generic.ListView):
     model=Vacancy
     template_name='Jobseeker/home.html'
-    context_object_name='vacancys'
+    context_object_name='job'
     def get_queryset(self):
-        return Vacancy.objects.all()
+        return Vacancy.objects.filter(jobcategory=self.request.user.profession)
+    
+    def get_context_data(self,**kwargs):
+        data = super().get_context_data(**kwargs)
+        data['skills_count']=JseekerSkill.objects.filter(user=self.request.user).count()
+        data['connection_count']=User.objects.filter(id=self.request.user.id).count()
+        data['appliedvacancy']=VacancyApply.objects.filter(user=self.request.user).count()
+        return data
 
 class ViewVacancy(generic.ListView):
     model= Vacancy

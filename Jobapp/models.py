@@ -20,7 +20,7 @@ class User(AbstractUser):
     Mobile_Number=models.CharField(max_length=10)
     currentcompany=models.CharField(max_length=100,blank=True)
     Gender=models.IntegerField(choices=Gender_choices,default=1)
-    profession=models.CharField(max_length=100,blank=True)
+    profession=models.IntegerField(choices=category_choices,default=1,blank=False)
     resume = models.FileField(upload_to="File/",blank=True)
     connections=models.ManyToManyField("self")
 

@@ -1,28 +1,65 @@
 {% extends "base.html" %}
 {% block body %}
-{% for i in vacancys %}
-    {% if i.user in request.user.connections.all %}
+<span class="display-3">Dashboard</span>
+<hr>
+<div class="row ml-5">
+    <div class="col">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    Skills Added
+                </div>
+                <div class="flip-card-back">
+                    {{skills_count}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    Connections
+                </div>
+                <div class="flip-card-back">
+                    {{connection_count}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    Applied Vacancy
+                </div>
+                <div class="flip-card-back">
+                    {{appliedvacancy}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div style="font-size: 2em;">Suggested Vacancys</div>
+<div>
+    {% for i in job %}
         <div class="media border p-3 m-3">
             <div class="media-body">
                 <h4>{{i.title}} Vacancy <small><i>Posted on {{i.date_added}}</i></small></h4>
-                <div id="abc" class="collapse">
-                    {{i.description|safe}}
+                <span class="Description">{{i.description|safe}}</span>
+                Deadline:{{i.deadline}}  <br>
+                        
                 </div>
-            Deadline:{{i.deadline}}  <br>
-            Posted by:{{i.user.first_name}} {{i.user.last_name}}
-
-            </div>
-            <div>
-                <img src="{{user.avatar.url}}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;"><br>
-                {% if not i.vac.all %}<a href="{% url 'ApplyVacancy' i.id%}" class="btn btn-success mr-4 mt-3">Apply</a>
-                {% else %}<button class="btn btn-secondary mr-3 mt-3" disabled>Applied</button>
-                {% endif %} 
+                <div class="text-center">
+                    <b class="mr-4">Posted by: {{i.user.first_name}} {{i.user.last_name}}</b><br>
+                    <img src="{{i.user.avatar.url}}" class="ml-5 mt-3 rounded-circle" style="width:60px;">
+                </div>       
             </div>
         </div>
+    {% endfor %}
+</div>
 
-        <button type="button" class="btn btn-secondary btn-xs showdescription" data-toggle="collapse" data-target="#abc">Show/Hide Description</button>
-    {% endif %}
-
-
-{% endfor %}
 {% endblock body %}

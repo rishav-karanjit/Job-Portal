@@ -35,3 +35,23 @@ a:hover
     border-top : 4px solid coral;
 }
 
+.descriptionbtndown {
+    position: fixed;
+    bottom:55;
+    right:100;
+    background-color: darkgoldenrod; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 20px gray;
+}
+.AppliedVacancy{
+    box-shadow: 0 0 15px gray;
+}

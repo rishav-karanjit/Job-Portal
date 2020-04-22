@@ -26,18 +26,16 @@ class Search(generic.ListView):
         search_term=request.GET['search_term']
         Category=request.GET['Category']
         Company=request.GET['Company']
-        search_result=Vacancy.objects.filter(
-            Q(title__icontains=search_term)|
-            Q(jobcategory=Category)|
-            Q(company=Company))
+        if(search_term==''):
+            search_term="Novalue"
         
+        search_result=Vacancy.objects.filter(Q(title__icontains=search_term) | Q(jobcategory=Category) | Q(company=Company))
         context={
             'search_term': search_term,
             'Category':Category,
             'Company':Company,
             'vacancys':search_result
         }
-        print(context)
         return render(request,'search.html',context)
 
 class SuggestedUser(generic.ListView):

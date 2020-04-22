@@ -23,17 +23,26 @@
                     <td>{{user.Mobile_Number}}</td>
                 </tr>
                 <tr>
+                    <td>Profession</td>
+                    <td>{{user.get_profession_display}}</td>
+                </tr>
+                
+                <tr>
                     <td> Gender</td>
                     <td> {{user.get_Gender_display}}</td>
                 </tr>
+                {% if user.currentcompany %}
                 <tr>
                     <td>Current Company</td>
                     <td>{{user.currentcompany}}</td>
                 </tr>
+                {% endif %}
+                {% if user.currentcompany %}
                 <tr>
                     <td>Resume</td>
                     <td>{{i.resume.url}}</td>
                 </tr>
+                {% endif %}
             </tbody>
         </table>
         <a href="{% url 'Recruiterupdateprofile' user.id %}"><button class="btn btn-secondary">Update Profile</button></a>

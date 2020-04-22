@@ -7,8 +7,19 @@ from twilio.rest import Client
 from django.conf import settings
 
 # Create your views here.
-class DashboardView(generic.TemplateView):
+class DashboardView(generic.ListView):
+    model=User
     template_name='Recruiters/dashboard.html'
+    context_object_name='users'
+    def get_queryset(self):
+        obj=User.objects.exclude(email=self.request.user)
+        return obj.filter(profession=self.request.user.profession)
+    
+    def get_context_data(self,**kwargs):
+        data = super().get_context_data(**kwargs)
+        data['connection_count']=User.objects.filter(id=self.request.user.id).count()
+        data['Postedvacancy']=Vacancy.objects.filter(user=self.request.user).count()
+        return data
     
 class PostVacancy(generic.CreateView):
     model= Vacancy

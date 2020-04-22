@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
+{% block title %}
+Applied Vacancy
+{% endblock title %}
 {% block body %}
-
+<div class="display-4 m-3 p-3">Applied Vacancy</div>
 {% for i in vacancys %}
-    <div>
-        Title:{{i.vacancy}}<br>
-        Applied Date:{{i.applieddate}}<br>
-        Status:{{i.get_status_display}}<br>
+    <div class="media border-top border-bottom border-dark p-3 m-3 AppliedVacancy">
+        <div class="media-body">
+            <b style="font-size:2rem">{{i.vacancy}}</b><br>Applied Date:{{i.applieddate}}       
+        </div>
+        <div class="mt-4">
+        {% if i.status is 1 %}
+            <span class="btn-lg btn-secondary disable">{{i.get_status_display}}</span>
+        {% elif i.status is 2 %}
+            <span class="btn-lg btn-success disable">{{i.get_status_display}}</span>
+        {% else %}
+            <span class="btn-lg btn-danger disable">{{i.get_status_display}}</span>
+        {% endif %}
+        </div>
     </div>
 {% endfor %}
 {% endblock body %}

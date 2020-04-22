@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block body %}
     <h5>Search Results</h5>
+           
+    {% if not vacancy %}No results{% endif %}
     {% for vacancy in vacancys %}
             <div class="media border p-3 m-3">
                 <div class="media-body">

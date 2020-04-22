@@ -3,20 +3,49 @@
 Vacancy
 {% endblock title %}
 {% block body %}
-    
-    {% for i in vacancys %}
+<span class="display-4 m-3 p-4">Vacancies</span>
+    <button onclick="myFunction()" class="descriptionbtndown" id="myBtn">Show Description</button>
     <div>
-        Company:{{i.company}}
-        Category:{{i.get_jobcategory_display}}
-        Title:{{i.title}}
-        date_added:{{i.date_added}}
-        deadline:{{i.deadline}}
-        Description:{{i.description|safe}}
-        Added by:{{i.user.first_name}} {{i.user.last_name}}<br>
-
-        {% if not i.vac.all %}<a href="{% url 'ApplyVacancy' i.id%}" class="btn btn-success">Apply </a>
-        {% else %}<button class="btn btn-secondary" disabled>Applied</button>
-        {% endif %} 
-    </div>
+    {% for i in vacancys %}
+        <div class="media border p-3 m-3">
+            <div class="media-body">
+                <h4>{{i.title}} Vacancy <small><i>Posted on {{i.date_added}}</i></small></h4>
+                <span class="Description">{{i.description|safe}}</span>
+                <b>Deadline:{{i.deadline}}  <br>
+                Company: {{i.company}} </b>
+                <div class="mt-3">
+                    {% if not i.vac.all %}
+                        <a href="{% url 'ApplyVacancy' i.id%}" class="btn-lg btn-success">Apply </a>
+                    {% else %}
+                        <button class="btn btn-secondary" disabled>Applied</button>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="text-center">
+                <b class="mr-4">Posted by: {{i.user.first_name}} {{i.user.last_name}}<br></b>
+                <img src="{{i.user.avatar.url}}" class="ml-5 mt-3 rounded-circle" style="width:60px;"><br>
+            </div>       
+        </div>
     {% endfor %}
+    </div>
+    <script>
+        function myFunction() {
+            var btnText = document.getElementById("myBtn");
+            var Description = document.getElementsByClassName("Description");
+            if (Description[0].style.display == "inline") {
+                var i;
+                btnText.innerHTML = "Show Description"; 
+                for(i in Description){
+                    Description[i].style.display = "none";
+                }             
+            } 
+            else {
+                var i;
+                btnText.innerHTML = "Hide Description";
+                for(i in Description){
+                    Description[i].style.display = "inline";
+                } 
+            }
+        }
+    </script>
 {% endblock body %}

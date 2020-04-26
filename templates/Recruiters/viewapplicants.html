@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 {% block body %}
-{% for a in applicants %}
-    <div>
-        <img class="rounded-circle" src="{{a.user.avatar.url}}" width="150" height="100">
-        {{a.user.first_name}}
-        {{a.user.last_name}}
-        <a href="{% url 'ViewAProfile' a.user.id%}" class="btn btn-secondary">View Profile</a>
-        <a href="{% url 'AcceptAppli' a.id%}" class="btn btn-success">Accept</a>
-        <a href="{% url 'RejectAppli' a.id%}" class="btn btn-danger">Reject</a>
+{% for vacancy in vacancys %}
+
+    {{vacancy.title}}
+    <div class="main-part">
+    {% for a in applicants %}
+        {% if a.vacancy == vacancy %}
+            <div class="card w-25 m-2">
+                <img class="card-img-top" src="{{a.user.avatar.url}}" style="height:50%;">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{a.user.first_name}} {{a.user.last_name}}</h4>
+                    <a href="{% url 'ViewAProfile' a.id%}" class="btn btn-info btn-block mt-1 p-3">View Profile</a>
+                    <a href="{% url 'AcceptAppli' a.id% }" class="btn btn-success btn-block mt-1">Accept</a>
+                    <a href="{% url 'RejectAppli' a.id% }" class="btn btn-danger btn-block mt-1">Reject</a>
+                </div>
+            </div>
+        {% endif %}      
+    {% endfor %}
     </div>
-    
+    <hr>
 {% endfor %}
 {% endblock body %}

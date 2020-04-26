@@ -1,6 +1,90 @@
 {% extends 'base.html' %}
 {% block body %}
+{% for i in data|slice:":1"%}
     <div class="container">
-        {% include 'profilepartials.html' %}
+        <div class="media p-1">
+            <div class="row media-body">
+                <div class="col-sm-1"><img class="rounded-circle" src="{{user.avatar.url}}" width="150" height="100"></div>
+                    <div class="col-sm-11 text-center"><h1>{{i.user.first_name}} {{i.user.last_name}}</h1>
+                        {{i.user.get_profession_display}}
+                    </div> 
+                </div>
+            </div>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <td> Email</td>
+                        <td> {{i.user}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile_Number</td>
+                        <td>{{i.user.Mobile_Number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Profession</td>
+                        <td>{{i.user.get_profession_display}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td> Gender</td>
+                        <td> {{i.user.get_Gender_display}}</td>
+                    </tr>
+                    {% if user.currentcompany %}
+                    <tr>
+                        <td>Current Company</td>
+                        <td>{{i.user.currentcompany}}</td>
+                    </tr>
+                    {% endif %}
+                    {% if i.user.resume %}
+                    <tr>
+                        <td>Resume</td>
+                        <td>{{i.resume.url}}</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+{% endfor %}
+
+        <div>
+            <div class="m-2"><h3>Skills</h3></div>
+            <table class="table table-hover">
+                <tbody>
+                {% for i in data %} 
+                    {% for skill in i.skills.all %}
+                            <tr>
+                                <td>{{skill.skill}}</td>
+                            </tr>    
+                    {% endfor %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <hr>
+            <div>
+                <div class="m-2"><h3>Education</h3></div>
+                <table class="table table-hover">
+                    <tbody>
+                    {% for i in data %}
+                        {% for edu in i.education.all %}
+                        <tr>
+                            <td class="text-center">
+                                <b>{{edu.institute}}</b><br>{{edu.degree}} in {{edu.field_of_study}}
+                            </td>
+                            <td class="text-center">
+                            {% if edu.date_started %}
+                                {{edu.date_started}}
+                            {% endif %}
+                            {% if edu.date_ended %}
+                                {% if edu.date_started %}-{% else %}Till{% endif %} {{edu.date_ended}}
+                            {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}          
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <hr>
     </div>
+</div>
 {% endblock body %}

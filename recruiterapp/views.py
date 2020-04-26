@@ -50,6 +50,7 @@ class RecruiterProfileView(generic.ListView):
         ctx = super(RecruiterProfileView, self).get_context_data(**kwargs)
         # ctx['recruiterprofile'] = User.objects.filter(user=self.request.user)
         return ctx
+        
 class RecruiterDetailsUpdateView(generic.UpdateView):
     model=User
     template_name='Recruiters/RecruiterDetailsUpdateView.html'
@@ -62,13 +63,18 @@ class ViewApplicants(generic.ListView):
     model=VacancyApply
     template_name='Recruiters/viewapplicants.html'
     context_object_name='applicants'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["vacancys"] = Vacancy.objects.all()
+        return context
+    
     def get_queryset(self):
         return VacancyApply.objects.filter(vacancy__user=self.request.user.id,status=1)
 
-class ViewAProfile(generic.DetailView):
-    model=User
-    template_name="ProfileAView.html"
-    context_object_name='profile'
+def ViewAProfile(request, pk):
+    context={}
+    context['data']=JseekerProfile.objects.filter(user_id=pk)
+    return render(request,"profileAView.html",context)
 
 def AcceptApplicants(request, pk):
     applicants = VacancyApply.objects.get(id=pk)

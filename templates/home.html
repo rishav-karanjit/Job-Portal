@@ -1,7 +1,7 @@
 {% load static %}
 <html>
 <head>
-    <title>JobPortal</title>
+    <title>Jobify</title>
 
   <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -22,7 +22,7 @@
                 {% endif %}
             </ul>      
             <ul class="nav navbar-brand mx-auto">
-                <a class="nav-link text-light display-4" href="{%url 'homepage'%}"><li class="nav-item">JobPortal</li></a>
+                <a class="nav-link text-light display-4" href="{%url 'homepage'%}"><li class="nav-item">Jobify</li></a>
             </ul>
             <ul>
                 {% if not request.user.is_authenticated %}
@@ -96,7 +96,7 @@
         <!-- Footer -->
         <footer class="page-footer font-small bg-secondary">
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2020 Copyright: JobPortal</div>
+            <div class="footer-copyright text-center py-3">© 2020 Copyright: Jobify</div>
             <!-- Copyright -->
         </footer>
         <!-- Footer -->

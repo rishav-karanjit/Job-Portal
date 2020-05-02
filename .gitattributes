@@ -1,2 +1,1 @@
-*.js linguist-detectable=false
-static/* linguist-vendored
+static/bootstrap/* linguist-vendored

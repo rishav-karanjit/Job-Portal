@@ -1,1 +1,2 @@
-static/bootstrap/* linguist-vendored
+static/bootstrap/* linguist-detectable=false
+static/jquery/* linguist-detectable=false

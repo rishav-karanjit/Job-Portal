@@ -2,3 +2,5 @@ env/
 JobPortaldatabase.sqlite3/
 JobPortaldb.sqlite3/
 media/
+
+*.js linguist-detectable=false

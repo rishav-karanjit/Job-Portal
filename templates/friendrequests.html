@@ -13,7 +13,7 @@
             <td><a href="{% url 'acceptfriend' r.from_person.id%}" class="btn btn-success">Accept</a></td>
         </tr>
         <tr class="row2">
-            <td>{{r.from_person.profession}} 
+            <td>{{r.from_person.get_profession_display}} 
                 {% if r.from_person.currentcompany %}
                     in {{r.from_person.currentcompany}}
                 {% endif %}

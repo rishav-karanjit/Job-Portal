@@ -13,7 +13,7 @@
             <div class="card w-25 m-2">
                 <img class="card-img-top" src="{{u.avatar.url}}">
                 <div class="card-body">
-                    <h4 class="card-title text-center">{{u.first_name}} {{u.last_name}}<br>{{u.profession}}</h4>
+                    <h4 class="card-title text-center">{{u.first_name}} {{u.last_name}}</h4>
                     <a href="{% url 'ViewSProfile' u.id%}" class="btn btn-info btn-block mt-1 p-3">View Profile</a>
                     <a href="{% url 'addfriend' u.id%}" class="btn btn-success btn-block mt-1">Connect</a>
                 </div>

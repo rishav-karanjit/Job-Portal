@@ -2,7 +2,7 @@
 {% block body %}
 {% for vacancy in vacancys %}
 
-    {{vacancy.title}}
+    <h4>Vacancy:{{vacancy.title}}</h4>
     <div class="main-part">
     {% for a in applicants %}
         {% if a.vacancy == vacancy %}

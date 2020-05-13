@@ -2,7 +2,7 @@
 {% load static %}
 <html>
 <head>
-  <title>JobPortal</title>
+  <title>Jobify</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -20,7 +20,7 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">     
         <ul class="nav navbar-brand mx-auto">
-            <a class="nav-link text-light display-4" href="{%url 'homepage'%}"><li class="nav-item">JobPortal</li></a>
+            <a class="nav-link text-light display-4" href="{%url 'homepage'%}"><li class="nav-item">Jobify</li></a>
         </ul>
     </nav>
     <br>
@@ -36,3 +36,13 @@
     <p class="text-center display-4 m-3 p-3" style="font-size:150%">OR</p>
     <div class="text-center"><a href="{% url 'login' %}" class="text-center btn btn-info">Login</a></div>
 </div>
+<br>
+  <!-- Footer -->
+  <footer class="page-footer font-small bg-secondary">
+
+  <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright: Jobify</div>
+  <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->

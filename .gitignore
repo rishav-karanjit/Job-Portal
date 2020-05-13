@@ -1,3 +1,6 @@
 env/
-JobPortaldb.sqlite3
+JobPortaldatabase.sqlite3/
+JobPortaldb.sqlite3/
 media/
+
+

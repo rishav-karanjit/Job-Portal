@@ -1,6 +1,8 @@
 # Job Portal
-<li>Before starting don't forget installing requirements: pip install -r requirements.txt
-<li>To run this code in local host use write this code in command prompt or git bash (or any similar): python manage.py runserver
+<li>Before starting don't forget installing requirements: <br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;pip install -r requirements.txt
+<li>To run this code in local host use write this code in command prompt or git bash (or any similar): <br>
+  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;python manage.py runserver
 <b><li>Homepage:
   <img src="./Screenshots/Homepage.png"></img>
 <li>Signup Page:

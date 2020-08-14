@@ -2,3 +2,4 @@ language: python
 
 script:
   - python manage.py runserver
+  - kill -INT 888

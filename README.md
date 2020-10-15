@@ -5,7 +5,9 @@
   <li>To run this project:</li>
   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;python manage.py runserver
 </ul>
-#### Screenshots of some pages:
+
+### Screenshots of some pages:
+
 <ul>
    <b>
     <li>Homepage:</li>

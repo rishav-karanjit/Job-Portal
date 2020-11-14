@@ -1,4 +1,5 @@
 # Job Portal
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 <ul>
   <li>To install requirements:</li>
   &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;pip install -r requirements.txt

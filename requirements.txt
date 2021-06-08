@@ -10,7 +10,7 @@ django-tinymce==2.8.0
 django-twilio==0.13.0.post1
 idna==2.9
 phonenumbers==8.11.5
-Pillow==7.0.0
+Pillow==8.2.0
 PyJWT==1.7.1
 pytz==2019.3
 requests==2.23.0

@@ -6,7 +6,7 @@ chardet==3.0.4
 Django==3.0.2
 django-crispy-forms==1.8.1
 django-phonenumber-field==4.0.0
-django-tinymce==2.8.0
+django-tinymce==3.4.0
 django-twilio==0.13.0.post1
 idna==2.9
 phonenumbers==8.11.5

@@ -13,7 +13,7 @@ phonenumbers==8.11.5
 Pillow==9.0.1
 PyJWT==1.7.1
 pytz==2019.3
-requests==2.23.0
+requests==2.31.0
 six==1.14.0
 soupsieve==1.9.5
 sqlparse==0.3.0
